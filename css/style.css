@@ -1,0 +1,23 @@
+body {
+    background: #05002E;
+    font-family: 'Noto Sans', serif;
+}
+
+h1 {
+    color: #FFF;
+    font-size: calc(12pt + 2vw);
+}
+
+img {
+    min-height: 200px;
+    height: 50vh;
+}
+
+.center {
+    position: absolute;
+    text-align: center;
+
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
