@@ -1,23 +1,27 @@
-body {
-    background: #05002E;
+body,html {
+    margin: 0;
+    padding: 0;
+}
+
+#under-construction {
+    height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+
     font-family: 'Noto Sans', serif;
+    background: #05002E;
 }
 
-h1 {
-    color: #FFF;
-    font-size: calc(12pt + 2vw);
-}
-
-img {
+#under-construction img {
     min-height: 200px;
     height: 50vh;
 }
 
-.center {
-    position: absolute;
-    text-align: center;
-
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
+#under-construction h1 {
+    color: #FFF;
+    font-size: calc(16pt + 2vw);
 }
