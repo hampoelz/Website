@@ -1,0 +1,48 @@
+#cursor {
+    position: fixed;
+    display: block;
+
+    width: 1.5rem;
+    height: 1.5rem;
+    border: 2px solid #fe3218;
+    border-radius: 50%;
+
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+
+    z-index: 100;
+}
+
+@keyframes scale-down {
+    0% {
+        width: 3rem;
+        height: 3rem;
+    }
+    100% {
+        width: 1.5rem;
+        height: 1.5rem;
+    }
+}
+
+@keyframes scale-up {
+    0% {
+        width: 1.5rem;
+        height: 1.5rem;
+    }
+    100% {
+        width: 3rem;
+        height: 3rem;
+    }
+}
+
+#cursor.normal {
+    width: 1.5rem;
+    height: 1.5rem;
+    animation: scale-down .2s;
+}
+
+#cursor.pointer {
+    width: 3rem;
+    height: 3rem;
+    animation: scale-up .2s;
+}
