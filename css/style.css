@@ -1,7 +1,13 @@
-body,html {
+body, html {
+    position: absolute;
+    overflow-x: hidden;
     margin: 0;
     padding: 0;
+
+    background: #05002E;
 }
+
+/*  */
 
 #under-construction {
     height: 100vh;
@@ -22,6 +28,97 @@ body,html {
 }
 
 #under-construction h1 {
-    color: #FFF;
     font-size: calc(16pt + 2vw);
+    color: #FFF;
 }
+
+/*  */
+
+#landing-page {
+    height: 100vh;
+    width: 100vw;
+
+    font-family: 'Noto Sans', serif;
+    background: #05002E;
+} 
+
+#landing-page .bg-container {
+    height: 100%;
+    width: 100%;
+
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+#landing-page .bg-container .bg-grid {
+    height: 100%;
+    width: 50%;
+    
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: repeat(12, 1fr);
+    column-gap: 32px;
+    row-gap: 32px;
+
+    transform: rotate(-20deg);
+}
+
+#landing-page .bg-container .bg-grid .bg-item {
+    border-radius: 10px;
+    opacity: .7;
+}
+
+#landing-page .bg-container .bg-grid .bg-item.item-1 {
+    grid-area: 1/1/7/5;
+    background: #450eff;
+}
+
+#landing-page .bg-container .bg-grid .bg-item.item-2 {
+    grid-area: 2/5/7/13;
+    background: #d32829;
+}
+
+#landing-page .bg-container .bg-grid .bg-item.item-3 {
+    grid-area: 7/1/12/9;
+    background: #fe3218;
+}
+
+#landing-page .bg-container .bg-grid .bg-item.item-4 {
+    grid-area: 7/9/13/13;
+    background: #21006f;
+}
+
+#landing-page .header {
+    position: absolute;
+    height: 100vh;
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-family: 'Nunito', serif;
+    font-size: calc(2rem + 6vw);
+    text-align: center;
+    font-weight: 200;
+    line-height: 1.15;
+    color: #FFFFFF;
+
+    z-index: 2;
+    user-select: none;
+}
+
+#landing-page .header > div {
+    margin: 50px;
+    cursor: pointer;
+}
+
+#page-2 {
+    height: 100vh;
+    margin: 2vh;
+    background: #fe3218;
+    border-radius: 10px;
+} 
