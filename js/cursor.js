@@ -11,8 +11,8 @@ document.addEventListener('DOMContentLoaded', () => {
         currentPos.x += (aimPos.x - currentPos.x) * mul;
         currentPos.y += (aimPos.y - currentPos.y) * mul;
 
-        mouseCursor.style.top = currentPos.y + "px";
-        mouseCursor.style.left = currentPos.x + "px";
+        if (aimPos.y != 0) mouseCursor.style.top = currentPos.y + "px";
+        if (aimPos.x != 0) mouseCursor.style.left = currentPos.x + "px";
     }
 
     animate();
