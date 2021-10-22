@@ -114,7 +114,6 @@ body, html {
 
 #landing-page .header > div {
     margin: 50px;
-    cursor: pointer;
     -webkit-tap-highlight-color: transparent;
 }
 

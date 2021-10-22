@@ -9,7 +9,7 @@
     border: 2px solid #fe3218;
     border-radius: 50%;
 
-    transform: translate(-50%, -50%);
+    transform: translate(-40%, -40%);
     pointer-events: none;
 
     z-index: 100;
@@ -18,11 +18,36 @@
 #cursor.normal {
     width: 1.5rem;
     height: 1.5rem;
-    transition: width .2s, height .2s;
+    font-size: 0rem;
+    background: transparent;
+    transition: width .2s, height .2s, font-size .1s linear;
 }
 
 #cursor.pointer {
     width: 3rem;
     height: 3rem;
-    transition: width .2s, height .2s;
+    font-size: 0rem;
+    background: rgba(254, 50, 24, .2);
+    transition: width .2s, height .2s, font-size .1s linear;
+}
+
+#cursor.click {
+    width: 5.5rem;
+    height: 5.5rem;
+    font-size: 2rem;
+    background: #fe3218;
+    transition: width .2s, height .2s, font-size .1s linear;
+}
+
+.cursor-text {
+    transform: translate(0, 50%);
+    font-family: 'Nunito', serif;
+    font-weight: bold;
+    text-align: center;
+    color: #FFFFFF;
+}
+
+#cursor.normal #click,
+#cursor.pointer #click {
+    display: none;
 }
