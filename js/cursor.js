@@ -33,7 +33,8 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     document.addEventListener('mouseover', event => {
-        if (window.getComputedStyle(event.target)['cursor'] == 'pointer') {
+        if (window.getComputedStyle(event.target)['cursor'] == 'pointer' ||
+            event.target.classList.contains('os-scrollbar-handle')) {
             mouseCursor.classList.add('pointer');
             mouseCursor.classList.remove('normal');
         } else {
