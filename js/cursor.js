@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     let mouseCursor = document.getElementById('cursor');
 
+    let lock = false;
     let currentPos = { x: 0, y: 0 };
     let aimPos = { x: 0, y: 0 };
 
@@ -17,7 +18,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
     animate();
 
+    document.addEventListener('touchstart', () => { lock = true; });
+    
     document.addEventListener('mousemove', event => {
+        if (lock) {
+            lock = false;
+            return;
+        }
+
         aimPos = {
             x: event.clientX,
             y: event.clientY
