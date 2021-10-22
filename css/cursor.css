@@ -15,36 +15,14 @@
     z-index: 100;
 }
 
-@keyframes scale-down {
-    0% {
-        width: 3rem;
-        height: 3rem;
-    }
-    100% {
-        width: 1.5rem;
-        height: 1.5rem;
-    }
-}
-
-@keyframes scale-up {
-    0% {
-        width: 1.5rem;
-        height: 1.5rem;
-    }
-    100% {
-        width: 3rem;
-        height: 3rem;
-    }
-}
-
 #cursor.normal {
     width: 1.5rem;
     height: 1.5rem;
-    animation: scale-down .2s;
+    transition: width .2s, height .2s;
 }
 
 #cursor.pointer {
     width: 3rem;
     height: 3rem;
-    animation: scale-up .2s;
+    transition: width .2s, height .2s;
 }
