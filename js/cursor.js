@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     let lock = false;
     let currentPos = { x: 0, y: 0 };
-    let aimPos = { x: 0, y: 0 };
+    let aimPos = { x: -1, y: -1 };
 
     function animate() {
         requestAnimationFrame(animate);
@@ -12,8 +12,8 @@ document.addEventListener('DOMContentLoaded', () => {
         currentPos.x += (aimPos.x - currentPos.x) * mul;
         currentPos.y += (aimPos.y - currentPos.y) * mul;
 
-        if (aimPos.y != 0) mouseCursor.style.top = currentPos.y + "px";
-        if (aimPos.x != 0) mouseCursor.style.left = currentPos.x + "px";
+        if (aimPos.y != -1) mouseCursor.style.top = currentPos.y + "px";
+        if (aimPos.x != -1) mouseCursor.style.left = currentPos.x + "px";
     }
 
     animate();
