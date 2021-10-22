@@ -42,13 +42,13 @@ document.addEventListener('DOMContentLoaded', () => {
     document.addEventListener('touchstart', () => { lock = true; });
 
     document.addEventListener('mousemove', event => {
-        mousePointer.style.top = event.clientY + "px";
-        mousePointer.style.left = event.clientX + "px";
-
         if (lock) {
             lock = false;
             return;
         }
+
+        mousePointer.style.top = event.clientY + "px";
+        mousePointer.style.left = event.clientX + "px";
 
         aimPos = {
             x: event.clientX,
