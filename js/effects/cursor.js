@@ -59,16 +59,13 @@ document.addEventListener('DOMContentLoaded', () => {
     document.addEventListener('mouseover', event => {
         if (event.target.classList.contains('clickable')) {
             mouseCursor.classList.add('click');
-            mouseCursor.classList.remove('normal');
-            mouseCursor.classList.remove('hand');
-        } else if (event.target.classList.contains('hoverable') || event.target.classList.contains('os-scrollbar-handle')) {
+            mouseCursor.classList.remove('normal', 'hand');
+        } else if (event.target.classList.contains('hover') || event.target.classList.contains('os-scrollbar-handle')) {
             mouseCursor.classList.add('hand');
-            mouseCursor.classList.remove('click');
-            mouseCursor.classList.remove('normal');
+            mouseCursor.classList.remove('normal', 'click');
         } else {
             mouseCursor.classList.add('normal');
-            mouseCursor.classList.remove('click');
-            mouseCursor.classList.remove('hand');
+            mouseCursor.classList.remove('click', 'hand');
         }
 
     });
