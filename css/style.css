@@ -103,10 +103,10 @@ body, html {
     align-items: center;
     justify-content: center;
 
-    font-family: 'Nunito', serif;
-    font-size: calc(2rem + 6vw);
+    font-family: 'Cutive Mono', monospace;
+    font-size: calc(2rem + 4vw);
     text-align: center;
-    font-weight: 200;
+    font-weight: 900;
     line-height: 1.15;
     color: #FFFFFF;
 
@@ -114,9 +114,21 @@ body, html {
     user-select: none;
 }
 
-#landing-page .header > div {
+#landing-page .header .title {
     margin: 50px;
     -webkit-tap-highlight-color: transparent;
+}
+
+#landing-page .header .title .bold {
+    color: #000000;
+    background-position: center;
+    background-color: rgba(255, 255, 255, .8);
+    letter-spacing: 10px;
+    box-decoration-break: clone;
+}
+
+#landing-page .header .title .scramble {
+    opacity: .15;
 }
 
 #page-2 {
