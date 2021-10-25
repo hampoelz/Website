@@ -90,8 +90,8 @@ class TextScramble {
 document.addEventListener('DOMContentLoaded', () => {
     const phrases = [
         'Rene \x0BHAMPÖLZ\x00',
-        'When it does not\nexist \x0B#CREATE\x00 it',
         'When it does not\nexist \x0B#DESIGN\x00 it',
+        'When it does not\nexist \x0B#CREATE\x00 it'
     ];
 
     const header = document.querySelector('#landing-page .header .title');
@@ -100,9 +100,9 @@ document.addEventListener('DOMContentLoaded', () => {
     let counter = 0;
     const next = () => {
         textScramble.setText(phrases[counter]).then(() => {
-            setTimeout(next, 1500);
+            setTimeout(next, counter == 0 ? 1500 : 4000);
+            counter = counter == 2 ? 1 : counter + 1;
         });
-        counter = counter == 2 ? 1 : counter + 1;
     };
     next();
 });
