@@ -21,49 +21,61 @@
     width: 1.5rem;
     height: 1.5rem;
     border: 2px solid #fe3218;
+    text-align: center;
 }
 
-#cursor.normal, #cursor.hand {
+#pointer.normal #cursor, #pointer.hand #cursor {
     font-size: 0rem;
 }
 
-#cursor.normal, #cursor.hand, #cursor.click {
-    transition: width .2s, height .2s, font-size .1s linear;
+#pointer.normal #cursor, #pointer.hand #cursor, #pointer.click #cursor {
+    transition: width .2s, height .2s, transform .5s, font-size .1s linear;
 }
 
-#cursor.normal {
+#pointer.normal #cursor {
     width: 1.5rem;
     height: 1.5rem;
     background: transparent;
 }
 
-#cursor.hand {
+#pointer.hand #cursor {
+    top: -4.5rem;
+    left: -4.5rem;
     width: 3rem;
     height: 3rem;
     background: rgba(254, 50, 24, .2);
 }
 
-#cursor.click {
+#pointer.click #cursor {
+    top: -7rem;
+    left: -7rem;
     width: 5.5rem;
     height: 5.5rem;
-    font-size: 2rem;
-    background: #fe3218;
+    background: rgba(254, 50, 24, .5);
+    transform: translate(-3rem, 4rem);
+    
+    -webkit-backdrop-filter: blur(4px);
+    backdrop-filter: blur(4px);
 }
 
-#cursor.click #pointer {
-    background: transparent;
-}
-
-.cursor-text {
-    transform: translate(0, 50%);
-    font-family: 'Nunito', serif;
+#cursor .cursor-text,
+#cursor .material-icons-round {
+    line-height: 5.5rem;
     font-weight: bold;
-    text-align: center;
     color: #FFFFFF;
+
     pointer-events: none;
 }
 
-#cursor.normal #click,
-#cursor.hand #click {
+#cursor .cursor-text {
+    font-family: 'Nunito', serif;
+}
+
+#cursor .material-icons-round {
+    font-size: 3rem;
+}
+
+#pointer.normal #cursor #click,
+#pointer.hand #cursor #click {
     display: none;
 }
