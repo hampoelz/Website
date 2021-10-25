@@ -7,36 +7,26 @@ class MouseParallax {
 
     start() {
         let effect = this;
-        let mouse = {
-            currentPos: { x: 0, y: 0 },
-            aimPos: { x: 0, y: 0 }
-        };
+        let mousePos = { x: 0, y: 0 };
 
-        document.addEventListener("mousemove", event => {
-            mouse.aimPos = {
-                x: event.clientX,
-                y: event.clientY
-            };
-        });
+        document.addEventListener("mousemove", event => mousePos = { x: event.clientX, y: event.clientY });
 
-        function animation() {
-            requestAnimationFrame(animation);
-
+        gsap.ticker.add(() => {
             let width = window.innerWidth / 2;
             let height = window.innerHeight / 2;
 
-            mouse.currentPos.x += (mouse.aimPos.x - mouse.currentPos.x) * 0.1;
-            mouse.currentPos.y += (mouse.aimPos.y - mouse.currentPos.y) * 0.1;
-
             for (let i = 0; i < effect.layer.length; i++) {
-                const element = effect.layer[i];
                 const multiplier = effect.mul * (i + 1);
-
-                element.style.top = (height - mouse.currentPos.y) * multiplier + "%";
-                element.style.left = (width - mouse.currentPos.x) * multiplier + "%";
+                
+                gsap.to(effect.layer[i], {
+                    duration: 1,
+                    ease: 'power1.out',
+                    yPercent: (height - mousePos.y) * multiplier,
+                    xPercent: (width - mousePos.x) * multiplier
+                });
             }
-        }
-        animation();
+        });
+        gsap.ticker.lagSmoothing()
     }
 }
 
