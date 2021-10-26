@@ -43,6 +43,18 @@
     font-family: 'Nunito', serif;
 }
 
+#cursor #move .cursor-icon {
+    position: absolute;
+}
+
+#cursor #move .cursor-icon:first-child {
+    transform: translate(-50%, -11%);
+}
+
+#cursor #move .cursor-icon:last-child {
+    transform: translate(-50%, 11%);
+}
+
 #pointer.normal #cursor,
 #pointer.hand #cursor {
     font-size: 0rem;
@@ -62,19 +74,28 @@
     background: rgba(254, 50, 24, .2);
 }
 
-#pointer.click #cursor {
+#pointer:not(.click) #cursor #click ,
+#pointer:not(.move) #cursor #move { 
+    display: none;
+}
+
+#pointer.click #cursor,
+#pointer.move #cursor {
     top: -7rem;
     left: -7rem;
     width: 5.5rem;
     height: 5.5rem;
+}
+
+#pointer.click #cursor {
     background: rgba(254, 50, 24, .5);
     transform: translate(-3rem, 4rem);
-    
+
     -webkit-backdrop-filter: blur(4px);
     backdrop-filter: blur(4px);
 }
 
-#pointer.normal #cursor #click,
-#pointer.hand #cursor #click {
-    display: none;
+#pointer.move #cursor {
+    background: rgb(254, 50, 24);
+    transform: translateX(-5rem);
 }
