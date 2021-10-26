@@ -79,12 +79,14 @@
 }
 
 #pointer:not(.click) #cursor #click ,
-#pointer:not(.move) #cursor #move { 
+#pointer:not(.move) #cursor #move,
+#pointer:not(.me) #cursor #me { 
     display: none;
 }
 
 #pointer.click #cursor,
-#pointer.move #cursor {
+#pointer.move #cursor,
+#pointer.me #cursor {
     top: -7rem;
     left: -7rem;
     width: 5.5rem;
@@ -101,4 +103,8 @@
 #pointer.move #cursor {
     background: var(--cursor-color);
     transform: translateX(-5rem);
+}
+
+#pointer.me {
+    background: transparent;
 }

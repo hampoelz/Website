@@ -66,16 +66,19 @@ function initHoverEffects(mousePointer) {
     document.addEventListener('mouseover', event => {
         if (event.target.classList.contains('clickable')) {
             mousePointer.classList.add('click');
-            mousePointer.classList.remove('normal', 'hand', 'move');
+            mousePointer.classList.remove('normal', 'hand', 'move', 'me');
         } else if (event.target.classList.contains('os-scrollbar-handle')) {
             mousePointer.classList.add('move');
-            mousePointer.classList.remove('normal', 'hand', 'click');
+            mousePointer.classList.remove('normal', 'hand', 'click', 'me');
+        } else if (event.target.classList.contains('me')) {
+            mousePointer.classList.add('me');
+            mousePointer.classList.remove('normal', 'hand', 'click', 'move');
         } else if (event.target.classList.contains('hover')) {
             mousePointer.classList.add('hand');
-            mousePointer.classList.remove('normal', 'click', 'move');
+            mousePointer.classList.remove('normal', 'click', 'move', 'me');
         } else {
             mousePointer.classList.add('normal');
-            mousePointer.classList.remove('click', 'hand', 'move');
+            mousePointer.classList.remove('click', 'hand', 'move', 'me');
         }
     });
 }
