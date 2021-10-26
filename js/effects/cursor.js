@@ -10,9 +10,16 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 function removeMousePointer() {
-    const stylesheet = new CSSStyleSheet();
-    stylesheet.insertRule('* { cursor: auto; }', 0);
-    document.adoptedStyleSheets = [stylesheet];
+    const insertRule = () => stylesheet.insertRule('* { cursor: auto; }', 0);
+    let stylesheet;
+    try {
+        stylesheet = new CSSStyleSheet();
+        insertRule();
+        document.adoptedStyleSheets = [stylesheet];
+    } catch {
+        stylesheet = document.styleSheets[document.styleSheets.length - 1];
+        insertRule();
+    }
 
     let cursor = document.createElement('canvas'),
         ctx = cursor.getContext('2d');
