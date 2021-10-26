@@ -6,3 +6,11 @@ body, html {
 
     background: #05002E;
 }
+
+::-moz-selection {
+  background: #fe3218;
+}
+
+::selection {
+    background: #fe3218;
+}

@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
     OverlayScrollbars(document.querySelectorAll('body'), {
-        className: "os-theme-thin-light",
+        className: "os-theme-thin",
         overflowBehavior: {
             x: "hidden"
         },

@@ -1,3 +1,9 @@
+:root {
+    --title-color: #FFFFFF;
+    --title-bold-color: #000000;
+    --title-bold-background: #FFFFFFCC;
+}
+
 #landing-page {
     height: 100vh;
     width: 100vw;
@@ -67,7 +73,70 @@
     z-index: 2;
 }
 
-#landing-page .header .title {
+#landing-page .biography {
+    position: absolute;
+    display: none;
+    height: 100%;
+    width: 100%;
+
+    opacity: 0;
+}
+
+#landing-page .biography .profile {
+    height: 50%;
+    width: 100%;
+
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+#landing-page .biography .profile img {
+    min-width: 200px;
+    min-height: 200px;
+    width: 15vw;
+    height: 15vw;
+    margin: 50px;
+
+    object-fit: cover;
+    object-position: 0 50%; /* Customize according to the picture */
+    border-radius: 50%;   
+
+    -webkit-user-select: none;
+    user-select: none;
+}
+
+#landing-page .biography .profile .text {
+    font-family: 'Cutive Mono', monospace;
+    width: 50vw;
+
+    font-size: 2rem;
+    text-align: justify;
+
+    color: #FFF
+}
+
+#landing-page .biography .profile .text .bold {
+    font-weight: bold;
+}
+
+#landing-page .biography .profile .text .mark {
+    padding: 0 4px;
+    color: #000;
+
+    background: #FFFC center;
+}
+
+#landing-page .biography .profile .text a:link,
+#landing-page .biography .profile .text a:visited,
+#landing-page .biography .profile .text a:hover,
+#landing-page .biography .profile .text a:active {
+    color: #6234fc;
+}
+
+#landing-page .title {
     margin: 50px;
 
     font-family: 'Cutive Mono', monospace;
@@ -75,26 +144,37 @@
     font-weight: 900;
     line-height: 1.15;
     text-align: center;
-    color: #FFFFFF;
+    color: var(--title-color);
 
     -webkit-tap-highlight-color: transparent;
     -webkit-user-select: none;
     user-select: none;
 }
 
-#landing-page .header .title .bold {
+#landing-page .title .bold {
     display: inline-block;
 
     text-align: center;
     text-indent: 5px;
     letter-spacing: 5px;
-    color: #000000;
+    color: var(--title-bold-color);
 
-    background: rgba(255, 255, 255, .8) center;
+    background: var(--title-bold-background) center;
 }
 
-#landing-page .header .title .scramble {
+#landing-page .title .scramble {
     opacity: .15;
+}
+
+@media (prefers-color-scheme: light) {
+    #landing-page .biography .profile .text {
+        color: #000;
+    }
+
+    #landing-page .biography .profile .text .mark {
+        color: #FFF;
+        background: #000C;
+    }
 }
 
 @media only screen and (max-width: 900px) {

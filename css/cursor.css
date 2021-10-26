@@ -1,7 +1,11 @@
+:root {
+    --cursor-color: #fe3218;
+}
+
 #pointer, #cursor {
     position: fixed;
 
-    background: #fe3218;
+    background: var(--cursor-color);
     border-radius: 50%;
 
     pointer-events: none;
@@ -20,7 +24,7 @@
     left: -2rem;
     width: 1.5rem;
     height: 1.5rem;
-    border: 2px solid #fe3218;
+    border: 2px solid var(--cursor-color);
     text-align: center;
 
     transition: width .2s, height .2s, transform .5s, font-size .1s linear;
@@ -71,7 +75,7 @@
     left: -4.5rem;
     width: 3rem;
     height: 3rem;
-    background: rgba(254, 50, 24, .2);
+    background: transparent;
 }
 
 #pointer:not(.click) #cursor #click ,
@@ -88,7 +92,6 @@
 }
 
 #pointer.click #cursor {
-    background: rgba(254, 50, 24, .5);
     transform: translate(-3rem, 4rem);
 
     -webkit-backdrop-filter: blur(4px);
@@ -96,6 +99,6 @@
 }
 
 #pointer.move #cursor {
-    background: rgb(254, 50, 24);
+    background: var(--cursor-color);
     transform: translateX(-5rem);
 }
