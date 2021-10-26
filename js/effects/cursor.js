@@ -6,6 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
     trackMouse(mousePointer, mouseCursor);
     initHoverEffects(mousePointer);
     initHoverAnimations(mousePointer);
+    initClickAnimations(mousePointer);
 });
 
 function removeMousePointer() {
@@ -94,4 +95,43 @@ function initHoverAnimations(mousePointer) {
         } else if (mousePointer.classList.contains('normal') || mousePointer.classList.contains('hand'))
             hoverAnimation = true;
     });
+}
+
+function initClickAnimations(mousePointer) {
+    let clickAnimation = true;
+    let clicked = false;
+
+    // Scrollbar
+    gsap.ticker.add(() => {
+        if (clickAnimation && mousePointer.classList.contains('move')) {
+            if (document.body.classList.contains('os-dragging')) {
+                clicked = true;
+                clickAnimation = false;
+                gsap.to('#cursor #move .cursor-icon:first-child', { yPercent: 0, duration: .1 });
+                gsap.to('#cursor #move .cursor-icon:last-child', { yPercent: 0, duration: .1 });
+            } else if (clicked) {
+                clicked = false;
+                gsap.to('#cursor #move .cursor-icon:first-child', { yPercent: -10, duration: .1 });
+                gsap.to('#cursor #move .cursor-icon:last-child', { yPercent: 10, duration: .1 });
+            }
+        }
+    });
+
+    // Other elements
+    document.addEventListener('mousedown', () => {
+        if (clickAnimation) {
+            if (mousePointer.classList.contains('click')) {
+                clickAnimation = false;
+                gsap.to('#cursor #click', { yPercent: -10, xPercent: 20, duration: .2 });
+            }
+        }
+    });
+
+    document.addEventListener('mouseup', () => {
+        clickAnimation = true
+
+        if (mousePointer.classList.contains('click')) {
+            gsap.to('#cursor #click', { yPercent: 0, xPercent: 0, duration: .2 });
+        }
+    })
 }
