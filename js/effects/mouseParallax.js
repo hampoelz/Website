@@ -1,3 +1,10 @@
+document.addEventListener('DOMContentLoaded', () => {
+    const background = document.getElementsByClassName("bg-container")[0];
+    const header = document.getElementsByClassName("header")[0];
+
+    new MouseParallax([background, header]);
+});
+
 class MouseParallax {
     constructor(layerElements, options = { multiplier: 0.001 }) {
         this.mul = options.multiplier;
@@ -29,10 +36,3 @@ class MouseParallax {
         gsap.ticker.lagSmoothing()
     }
 }
-
-document.addEventListener('DOMContentLoaded', () => {
-    const background = document.getElementsByClassName("bg-container")[0];
-    const header = document.getElementsByClassName("header")[0];
-
-    new MouseParallax([background, header]);
-});

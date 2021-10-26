@@ -1,3 +1,23 @@
+document.addEventListener('DOMContentLoaded', () => {
+    const phrases = [
+        'Rene \x0BHAMPÖLZ\x00',
+        'When it does not\nexist \x0B#DESIGN\x00 it',
+        'When it does not\nexist \x0B#CREATE\x00 it'
+    ];
+
+    const header = document.querySelector('#landing-page .header .title');
+    const textScramble = new TextScramble(header);
+
+    let counter = 0;
+    const next = () => {
+        textScramble.setText(phrases[counter]).then(() => {
+            setTimeout(next, counter == 0 ? 1500 : 4000);
+            counter = counter == 2 ? 1 : counter + 1;
+        });
+    };
+    next();
+});
+
 class TextScramble {
     constructor(textElement) {
         this.element = textElement;
@@ -55,14 +75,14 @@ class TextScramble {
             }
 
             charElement.classList.add('hover');
-            if (specials.bold) charElement.classList.add('clickable', 'bold');
+            if (specials.bold) charElement.classList.add('clickable' /* for test purposes */, 'bold');
 
             if (this.frame >= end) {
                 complete++;
                 charElement.innerHTML = to;
             } else if (this.frame >= start) {
                 if (!char || Math.random() < 0.28) {
-                    char = this.randomChar();
+                    char = this.chars[Math.floor(Math.random() * this.chars.length)];
                     this.queue[i].char = char;
                 }
                 charElement.classList.add('scramble');
@@ -74,35 +94,10 @@ class TextScramble {
 
         this.element.innerHTML = output;
 
-        if (complete === this.queue.length) {
-            this.resolve();
-        } else {
+        if (complete === this.queue.length) this.resolve();
+        else {
             this.frameRequest = requestAnimationFrame(this.update);
             this.frame++;
         }
     }
-
-    randomChar() {
-        return this.chars[Math.floor(Math.random() * this.chars.length)]
-    }
 }
-
-document.addEventListener('DOMContentLoaded', () => {
-    const phrases = [
-        'Rene \x0BHAMPÖLZ\x00',
-        'When it does not\nexist \x0B#DESIGN\x00 it',
-        'When it does not\nexist \x0B#CREATE\x00 it'
-    ];
-
-    const header = document.querySelector('#landing-page .header .title');
-    const textScramble = new TextScramble(header);
-
-    let counter = 0;
-    const next = () => {
-        textScramble.setText(phrases[counter]).then(() => {
-            setTimeout(next, counter == 0 ? 1500 : 4000);
-            counter = counter == 2 ? 1 : counter + 1;
-        });
-    };
-    next();
-});
