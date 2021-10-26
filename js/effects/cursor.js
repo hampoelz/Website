@@ -29,6 +29,20 @@ document.addEventListener('DOMContentLoaded', () => {
         mousePointer.style.left = event.clientX + "px";
     });
 
+    let animateToggle = true;
+
+    gsap.ticker.add(() => {
+        if (mousePointer.classList.contains('click') && animateToggle) {
+            animateToggle = false;
+            gsap.fromTo('#cursor .cursor-icon',
+                { yPercent: 50, xPercent: -100, opacity: 0 },
+                { yPercent: 0, xPercent: 0, opacity: 1, delay: .2, duration: .2, ease: 'back.out', overwrite: true });
+        } else if (!mousePointer.classList.contains('click')) {
+            animateToggle = true;
+        }
+    });
+    gsap.ticker.lagSmoothing()
+
     document.addEventListener('mouseover', event => {
         if (event.target.classList.contains('clickable')) {
             mousePointer.classList.add('click');
