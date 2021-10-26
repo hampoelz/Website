@@ -35,6 +35,10 @@
     pointer-events: none;
 }
 
+#cursor .cursor-icon {
+    font-size: 2rem;
+}
+
 #cursor .cursor-text {
     font-family: 'Nunito', serif;
 }
