@@ -1,0 +1,8 @@
+body, html {
+    position: absolute;
+    overflow-x: hidden;
+    margin: 0;
+    padding: 0;
+
+    background: #05002E;
+}
