@@ -2,6 +2,12 @@
     --cursor-color: #fe3218;
 }
 
+span.ripple {
+    position: absolute;
+    border-radius: 50%;
+    transform: scale(0);
+}
+
 #pointer, #cursor {
     position: fixed;
 
@@ -78,13 +84,15 @@
     background: transparent;
 }
 
-#pointer:not(.click) #cursor #click ,
+#pointer:not(.click) #cursor #click,
+#pointer:not(.move_down) #cursor #move_down,
 #pointer:not(.move) #cursor #move,
 #pointer:not(.me) #cursor #me { 
     display: none;
 }
 
 #pointer.click #cursor,
+#pointer.move_down #cursor,
 #pointer.move #cursor,
 #pointer.me #cursor {
     top: -7rem;
@@ -95,14 +103,14 @@
 
 #pointer.click #cursor {
     transform: translate(-3rem, 4rem);
-
-    -webkit-backdrop-filter: blur(4px);
-    backdrop-filter: blur(4px);
 }
 
 #pointer.move #cursor {
-    background: var(--cursor-color);
     transform: translateX(-5rem);
+}
+
+#pointer.move_down #cursor {
+    transform: translateY(5rem);
 }
 
 #pointer.me {

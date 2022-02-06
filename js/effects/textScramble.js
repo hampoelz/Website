@@ -1,32 +1,11 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const phrases = [
-        'Rene \x0BHAMPÖLZ\x00',
-        'When it does not\nexist \x0B#DESIGN\x00 it',
-        'When it does not\nexist \x0B#CREATE\x00 it'
-    ];
-
-    const header = document.querySelector('#landing-page .header .title');
-    const textScramble = new TextScramble(header);
-
-    let counter = 0;
-    const next = () => {
-        textScramble.setText(phrases[counter]).then(() => {
-            setTimeout(next, counter == 0 ? 1500 : 4000);
-            counter = counter == 2 ? 1 : counter + 1;
-        });
-    };
-    next();
-});
-
 class TextScramble {
-    constructor(textElement) {
+    constructor(textElement, specials) {
         this.element = textElement;
         this.chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
-        this.specials = {
-            reset: '\x00',
-            bold: '\x0B',
-            newline: '\n'
-        }
+        this.specials = Object.assign({
+            newline: '\n',
+            reset: '\x00'
+        }, specials)
         this.update = this.update.bind(this);
     }
 
@@ -56,26 +35,28 @@ class TextScramble {
         let output = '';
         let complete = 0;
 
-        let specials = {
-            bold: false
-        };
+        let specialsList = {};
 
+        loop:
         for (let i = 0, n = this.queue.length; i < n; i++) {
             const charElement = document.createElement('span');
             let { from, to, start, end, char } = this.queue[i];
 
-            if (to == this.specials.newline) output += '<br>';
-            else if (to == this.specials.bold) specials.bold = true;
-            else if (to == this.specials.reset)
-                Object.keys(specials).forEach(v => specials[v] = false)
+            for (let key of Object.keys(this.specials)) {
+                let value = this.specials[key];
 
-            if (Object.values(this.specials).includes(to)) {
-                complete++;
-                continue;
+                if (value && (to == value || to == value.char)) {
+                    if (key == 'newline') output += '<br>';
+                    else if (key == 'reset') Object.keys(specialsList).forEach(key => specialsList[key] = false);
+                    else specialsList[key] = true;
+
+                    complete++;
+                    continue loop;
+                } else if (key == 'classList') charElement.classList.add(...value);
             }
 
-            charElement.classList.add('hover');
-            if (specials.bold) charElement.classList.add('clickable' /* for test purposes */, 'bold');
+            for (let key of Object.keys(specialsList))
+                if (specialsList[key]) charElement.classList.add(...this.specials[key].classList);
 
             if (this.frame >= end) {
                 complete++;

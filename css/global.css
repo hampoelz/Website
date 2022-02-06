@@ -1,16 +1,145 @@
 body, html {
-    position: absolute;
-    overflow-x: hidden;
-    margin: 0;
-    padding: 0;
+	position: absolute;
+	overflow: hidden;
+	margin: 0;
+	padding: 0;
 
-    background: #05002E;
+	background: #080808;
+}
+
+.title {
+    margin: 50px;
+
+    font-family: 'Cutive Mono', monospace;
+    font-size: calc(2rem + 4vw);
+    font-weight: 900;
+    line-height: 1.15;
+    text-align: center;
+
+    -webkit-tap-highlight-color: transparent;
+    -webkit-user-select: none;
+    user-select: none;
+}
+
+.title,
+.text,
+a:link, a:visited, a:hover, a:active {
+	color: #FFF;
+}
+
+.title .mark {
+    text-align: center;
+    text-indent: 5px;
+    letter-spacing: 5px;
+}
+
+.text .mark {
+	padding: 0 10px;
+	border-radius: 2px;
+}
+
+.title .mark,
+.text .mark {
+	color: #080808;
+	background: #FFFC center;
+}
+
+.text .bold {
+    font-weight: bolder;
+}
+
+.scramble {
+    opacity: .15;
+}
+
+.picture-container {
+    position: relative;
+    min-width: 200px;
+    min-height: 200px;
+    width: 15vw;
+    height: 15vw;
+    margin: 50px;
+}
+
+.picture-container::before {
+    position: absolute;
+    border-radius: 50%;
+    transform: scale(1.42);
+}
+
+.picture-container .picture-spin-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    animation: picture-spin 12s linear infinite;
+}
+
+.picture-container .picture-spin-container .picture-shape {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    border-radius: 60% 40% 30% 70%/60% 30% 70% 40%;
+    animation: picture-morph 8s ease-in-out infinite both alternate;
+    transition: border-radius 1s ease-out;
+}
+
+.picture-container .picture-spin-container .picture-shape .picture {
+    position: absolute;
+    left: -21%;
+    top: -21%;
+    width: 142%;
+    height: 142%;
+    animation: picture-spin 12s linear infinite reverse;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    overflow: visible;
+}
+
+.picture-container .picture-spin-container .picture-shape .picture .picture-ripple {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+@keyframes picture-morph {
+  0% {
+    border-radius: 40% 60% 60% 40%/60% 30% 70% 40%;
+  }
+  100% {
+    border-radius: 40% 60%;
+  }
+}
+
+@keyframes picture-spin {
+  to {
+    transform: rotate(1turn);
+  }
+}
+
+@media (prefers-color-scheme: light) {
+	body, html {
+		background: #F2F2F2;
+	}
+
+	.title,
+	.text,
+	a:link, a:visited, a:hover, a:active {
+		color: #000;
+	}
+
+	.title .mark,
+	.text .mark {
+		color: #F2F2F2;
+		background: #000C center;
+	}
 }
 
 ::-moz-selection {
-  background: #fe3218;
+	background: #fe3218;
 }
 
 ::selection {
-    background: #fe3218;
+	background: #fe3218;
 }

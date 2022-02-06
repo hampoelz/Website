@@ -12,6 +12,11 @@
     background: #05002E;
 }
 
+#under-construction,
+#under-construction * {
+    cursor: initial !important;
+}
+
 #under-construction img {
     min-height: 200px;
     height: 50vh;

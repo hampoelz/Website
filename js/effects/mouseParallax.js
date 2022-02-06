@@ -1,14 +1,8 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const background = document.getElementsByClassName("bg-container")[0];
-    const header = document.getElementsByClassName("header")[0];
-
-    new MouseParallax([background, header]);
-});
-
 class MouseParallax {
-    constructor(layerElements, options = { multiplier: 0.001 }) {
-        this.mul = options.multiplier;
+    constructor(layerElements, options) {
+        let defaults = { multiplier: 0.001 }
         this.layer = layerElements;
+        this.options = Object.assign({}, defaults, options);
         this.start();
     }
 
@@ -23,7 +17,7 @@ class MouseParallax {
             let height = window.innerHeight / 2;
 
             for (let i = 0; i < effect.layer.length; i++) {
-                const multiplier = effect.mul * (i + 1);
+                const multiplier = effect.options.multiplier * (i + 1);
                 
                 gsap.to(effect.layer[i], {
                     duration: 1,
