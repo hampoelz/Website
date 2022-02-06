@@ -1,0 +1,61 @@
+/*#region SocialMedia*/
+
+.spacer.social {
+    position: relative;
+    margin-top: -15vh;
+
+    background-image: url(../../assets/spacer-social.svg);
+}
+
+#social-media {
+    position: relative;
+    height: 80vh;
+    left: 0;
+    right: 0;
+
+    padding: 5vh;
+    background: #0C0032;
+}
+
+#social-media .container {
+    height: 100%;
+
+    display: grid;
+    grid-template-columns: 10fr 1fr 10fr 1fr 10fr;
+
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+#social-media .social-spacer {
+    position: relative;
+    height: 100%;
+
+    aspect-ratio: 20/200;
+
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+#social-media .social-spacer.github-insta {
+    background-image: url(../../assets/spacer-github_insta.svg);
+}
+
+#social-media .social-spacer.insta-twitter {
+    background-image: url(../../assets/spacer-insta_twitter.svg);
+}
+
+#social-media .github {
+    background: #181717;
+}
+
+#social-media .instagram {
+    background: #E4405F;
+}
+
+#social-media .twitter {
+    background: #1DA1F2;
+}
+
+/*#endregion SocialMedia*/

@@ -59,6 +59,7 @@ document.addEventListener('DOMContentLoaded', () => {
         .fromTo('#landing-page .biography .title, #landing-page .biography .profile', { yPercent: -10, opacity: 0 }, { yPercent: 0, opacity: 1 })
         .set('#landing-page .biography', { display: null  }, '<')
 
+    /*
     let loadProjects = gsap.timeline({
         paused: true,
         onComplete: () => {
@@ -80,11 +81,13 @@ document.addEventListener('DOMContentLoaded', () => {
         .set('#landing-page .biography', { display: 'none' }, '<')
         // .to(document.body, { '--scrollbar-color': themeColors.foreground }, '<')
         .to('#landing-page .ripple-transition', { duration: 1, opacity: 0, display: 'none' })
+    */
     
     gsap.timeline({
         scrollTrigger: {
             trigger: '#landing-page',
             start: 0,
+            end: "+=500",
             scrub: true,
             pin: true
         }
@@ -92,6 +95,7 @@ document.addEventListener('DOMContentLoaded', () => {
         .add(headerBgOut)
         .add(headerOut)
         .add(biographyIn)
+    /*
         .to({}, {
             delay: 1,
             onStart: () => {
@@ -103,4 +107,5 @@ document.addEventListener('DOMContentLoaded', () => {
                 loadProjects.reverse();
             }
         })
+    */
 });
