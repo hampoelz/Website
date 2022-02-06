@@ -44,7 +44,7 @@
     background: #05002E;
 }
 
-#landing-page .ripple-transition > *:not(span) {
+#landing-page .ripple-transition>*:not(span) {
     z-index: 3;
 }
 
@@ -79,7 +79,7 @@
 #landing-page .ripple-transition h1 {
     width: 400px;
     margin-top: 5vh;
-    
+
     color: white;
     text-align: center;
 }
@@ -126,7 +126,7 @@
 #landing-page .header .bg-container .bg-grid {
     height: 80%;
     width: 40%;
-    
+
     display: grid;
     grid-template: repeat(12, 1fr);
     gap: 32px;
@@ -295,12 +295,12 @@
 }
 
 @keyframes bg-bubbles {
-  0% {
-    transform: translateY(0);
-  }
-  100% {
-    transform: translateY(-150vh) rotate(600deg);
-  }
+    0% {
+        transform: translateY(0);
+    }
+    100% {
+        transform: translateY(-150vh) rotate(600deg);
+    }
 }
 
 @media (prefers-color-scheme: light) {
@@ -313,7 +313,21 @@
 
 /*#endregion Biography*/
 
-@media only screen and (max-width: 900px) {
+@media only screen and (max-width: 1400px) {
+    #landing-page .biography .profile .text {
+        width: 60vw;
+    }
+}
+
+@media only screen and (max-width: 1200px) {
+    #landing-page .biography .profile {
+        flex-direction: column;
+    }
+
+    #landing-page .biography .profile .text {
+        width: 80vw;
+    }
+
     /* TODO: small screens & portrait mode */
     /* Background grid looks good up to a screen width 900px */
-} 
+}

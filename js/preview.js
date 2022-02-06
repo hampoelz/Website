@@ -6,7 +6,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     previewSection.style.setProperty('display', 'none');
 
-    if (urlParams.get('preview') == 1) {
+    console.log(document.body.clientWidth)
+
+    if (urlParams.get('preview') == 1 && document.body.clientWidth > 1200 && document.body.clientHeight > 700 && document.body.clientWidth >= 1.5 * document.body.clientHeight) {
         constructionSection.style.setProperty('display', 'none');
         previewSection.style.removeProperty('display');
     }
