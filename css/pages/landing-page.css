@@ -204,18 +204,20 @@
 
 #landing-page .biography .bg-container {
     opacity: .3;
+    display: flex;
+    justify-content: center;
 }
 
 #landing-page .biography .bg-container .bg-bubbles {
     position: absolute;
     height: 100vh;
-    width: 100%;
+    width: 90%;
 }
 
 #landing-page .biography .bg-container .bg-bubbles li {
     position: absolute;
     display: block;
-    bottom: -160px;
+    bottom: -30vh;
     width: 40px;
     height: 40px;
     border-radius: 3px;
@@ -298,6 +300,7 @@
     0% {
         transform: translateY(0);
     }
+
     100% {
         transform: translateY(-150vh) rotate(600deg);
     }
