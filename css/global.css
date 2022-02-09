@@ -21,30 +21,43 @@ body, html {
   user-select: none;
 }
 
+.text {
+  font-family: 'Cutive Mono', monospace;
+  font-size: 2rem;
+}
+
 .title,
 .text,
 a:link, a:visited, a:hover, a:active {
   color: #FFF;
 }
 
-.title .mark {
+.title .mark,
+.title.mark {
   text-align: center;
   text-indent: 5px;
   letter-spacing: 5px;
+
+  padding: 0 10px;
+  border-radius: 5px;
 }
 
-.text .mark {
+.text .mark,
+.text.mark {
   padding: 0 10px;
   border-radius: 2px;
 }
 
 .title .mark,
-.text .mark {
+.title.mark,
+.text .mark,
+.text.mark {
   color: #080808;
   background: #FFFC center;
 }
 
-.text .bold {
+.text .bold,
+.text.bold {
   font-weight: bolder;
 }
 

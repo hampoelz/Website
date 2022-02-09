@@ -112,6 +112,9 @@
 #landing-page .header .title .mark {
     color: var(--header-mark-color);
     background: var(--header-mark-background);
+
+    padding: 0;
+    border-radius: 0;
 }
 
 /*#region HeaderBackground*/
@@ -196,9 +199,6 @@
 
 #landing-page .biography .profile .text {
     width: 50vw;
-
-    font-family: 'Cutive Mono', monospace;
-    font-size: 2rem;
 }
 
 /*#region BiographyBackground*/
