@@ -189,6 +189,7 @@
 
 #landing-page .biography .profile .picture-container .picture-spin-container .picture-shape .picture {
     background: url(../../assets/profile.jpg);
+    background-color: #1C3334;
     background-size: 80%;
     background-position: 60% 0%;
 }
