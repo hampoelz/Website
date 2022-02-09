@@ -9,7 +9,8 @@
 
 #connect-social {
     position: relative;
-    margin-top: -1px; /* Fix glitching because of smooth scroll */
+    margin-top: -1px;
+    /* Fix glitching because of smooth scroll */
     height: 80vh;
     left: 0;
     right: 0;
@@ -48,7 +49,7 @@
 }
 
 #connect-social .github {
-    background: #181717;
+    background: #1b1f23;
 }
 
 #connect-social .instagram {
