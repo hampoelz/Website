@@ -32,6 +32,12 @@
     overflow: hidden;
 }
 
+#connect-social a {
+    -webkit-user-drag: none;
+    -webkit-user-select: none;
+    user-select: none;
+}
+
 #connect-social .container .text.tag {
     font-size: 1.5rem;
     padding: 15px;
