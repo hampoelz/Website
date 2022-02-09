@@ -87,13 +87,15 @@ span.ripple {
 #pointer:not(.click) #cursor #click,
 #pointer:not(.move_down) #cursor #move_down,
 #pointer:not(.move) #cursor #move,
-#pointer:not(.me) #cursor #me { 
+#pointer:not(.visit) #cursor #visit,
+#pointer:not(.me) #cursor #me {
     display: none;
 }
 
 #pointer.click #cursor,
 #pointer.move_down #cursor,
 #pointer.move #cursor,
+#pointer.visit #cursor,
 #pointer.me #cursor {
     top: -7rem;
     left: -7rem;
@@ -113,6 +115,7 @@ span.ripple {
     transform: translateY(5rem);
 }
 
+#pointer.visit,
 #pointer.me {
     background: transparent;
 }

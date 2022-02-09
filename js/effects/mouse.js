@@ -4,6 +4,7 @@ class Mouse {
         'c-scrollbar_thumb': 'move',
         'move': 'move',
         'move_down': 'move_down',
+        'visit': 'visit',
         'me': 'me',
     }, {
         hover: 'hand',
