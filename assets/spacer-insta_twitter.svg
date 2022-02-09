@@ -1,1 +1,21 @@
-<svg id="visual" viewBox="0 0 50 200" width="50" height="200" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"><rect x="0" y="0" width="50" height="200" fill="#E4405F"></rect><path d="M20 200L24 100L24 0L50 0L50 100L50 200Z" fill="#0c0032"></path><path d="M31 200L33 100L31 0L50 0L50 100L50 200Z" fill="#1da1f2"></path></svg>
+<svg viewBox="0 0 50 200" width="50" height="200" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1">
+    <style type="text/css">
+        #spacer {
+            animation: morph 20s ease-in-out infinite;
+        }
+
+        @keyframes morph {
+            0%, 100% {
+                d: path("M22 200L21 150L25 100L28 50L24 0L50 0L50 50L50 100L50 150L50 200Z");
+            }
+            33% {
+                d: path("M26 200L24 150L22 100L28 50L26 0L50 0L50 50L50 100L50 150L50 200Z");
+            }
+            66% {
+                d: path("M23 200L22 150L30 100L26 50L25 0L50 0L50 50L50 100L50 150L50 200Z");
+            }
+        }
+    </style>
+    <rect x="0" y="0" width="50" height="200" fill="#E4405F"></rect>
+    <path id="spacer" fill="#1da1f2"></path>
+</svg>
