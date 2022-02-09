@@ -9,6 +9,7 @@
 
 #connect-social {
     position: relative;
+    margin-top: -1px; /* Fix glitching because of smooth scroll */
     height: 80vh;
     left: 0;
     right: 0;
