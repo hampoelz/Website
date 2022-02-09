@@ -22,6 +22,16 @@
     justify-content: center;
 }
 
+#connect-social .title,
+#connect-social .text {
+    color: #FFF;
+}
+
+#connect-social .title .mark {
+    color: #080808;
+    background: #FFFC;
+}
+
 #connect-social .container {
     height: 50vh;
 
