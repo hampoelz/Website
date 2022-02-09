@@ -7,7 +7,7 @@
     background-image: url(../../assets/spacer-social.svg);
 }
 
-#social-media {
+#connect-social {
     position: relative;
     height: 80vh;
     left: 0;
@@ -17,7 +17,7 @@
     background: #0C0032;
 }
 
-#social-media .container {
+#connect-social .container {
     height: 100%;
 
     display: grid;
@@ -27,7 +27,7 @@
     overflow: hidden;
 }
 
-#social-media .social-spacer {
+#connect-social .social-spacer {
     position: relative;
     height: 100%;
 
@@ -38,23 +38,23 @@
     background-size: cover;
 }
 
-#social-media .social-spacer.github-insta {
+#connect-social .social-spacer.github-insta {
     background-image: url(../../assets/spacer-github_insta.svg);
 }
 
-#social-media .social-spacer.insta-twitter {
+#connect-social .social-spacer.insta-twitter {
     background-image: url(../../assets/spacer-insta_twitter.svg);
 }
 
-#social-media .github {
+#connect-social .github {
     background: #181717;
 }
 
-#social-media .instagram {
+#connect-social .instagram {
     background: #E4405F;
 }
 
-#social-media .twitter {
+#connect-social .twitter {
     background: #1DA1F2;
 }
 
