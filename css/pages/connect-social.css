@@ -10,6 +10,7 @@
 
     /* Fix glitching because of smooth scroll */
     margin-top: -1px;
+    margin-bottom: -1px;
 
     padding: 5vh;
     background: #0C0032;

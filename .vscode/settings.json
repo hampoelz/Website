@@ -1,6 +1,7 @@
 {
     "conventionalCommits.scopes": [
         "landing-page",
-        "social-media"
+        "social-media",
+        "skills"
     ]
 }
