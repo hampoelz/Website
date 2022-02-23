@@ -1,3 +1,7 @@
+@import url(./pages/landing-page.css);
+@import url(./pages/connect-social.css);
+@import url(./pages/skills.css);
+
 body, html {
   position: absolute;
   overflow: hidden;
