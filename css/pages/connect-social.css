@@ -1,9 +1,7 @@
 /*#region SocialMedia*/
 
 .spacer.social {
-    position: relative;
     margin-top: -15vh;
-
     background-image: url(../../assets/spacer-social.svg);
 }
 

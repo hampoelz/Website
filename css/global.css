@@ -62,6 +62,7 @@ a:link, a:visited, a:hover, a:active {
 }
 
 .spacer {
+  position: relative;
   aspect-ratio: 960/300;
   width: 100%;
   background-repeat: no-repeat;
