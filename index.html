@@ -1,178 +1,244 @@
-<!doctype html>
-<html lang="en">
-
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0, viewport-fit=cover"
+    />
 
     <title>Hamp&ouml;lz</title>
-    <meta name="description" content="When it does not exist CREATE it.">
-    <meta name="author" content="Rene Hampölz">
+    <meta name="description" content="When it does not exist CREATE it." />
+    <meta name="author" content="Rene Hampölz" />
 
     <meta property="og:title" content="Rene Hampölz" />
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://hampoelz.net/">
-    <meta property="og:description" content="When it does not exist CREATE it.">
+    <meta property="og:url" content="https://hampoelz.net/" />
+    <meta
+      property="og:description"
+      content="When it does not exist CREATE it."
+    />
 
-    <link rel="icon" href="./favicon.ico" sizes="any">
-    <link rel="icon" href="https://raw.githubusercontent.com/hampoelz/Branding/master/web/logo.svg"
-        type="image/svg+xml">
-    <link rel="apple-touch-icon"
-        href="https://raw.githubusercontent.com/hampoelz/Branding/master/rendered/logo/logo-180x-primary.png">
+    <link rel="icon" href="./favicon.ico" sizes="any" />
+    <link
+      rel="icon"
+      href="https://raw.githubusercontent.com/hampoelz/Branding/master/web/logo.svg"
+      type="image/svg+xml"
+    />
+    <link
+      rel="apple-touch-icon"
+      href="https://raw.githubusercontent.com/hampoelz/Branding/master/rendered/logo/logo-180x-primary.png"
+    />
 
+    <!-- TODO: Don't use google server -->
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Material+Icons+Round"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Noto+Sans"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Cutive+Mono"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Nunito"
+      crossorigin="anonymous"
+    />
+    <!-- End TODO -->
 
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Material+Icons+Round" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Cutive+Mono" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/global.css" />
+    <link rel="stylesheet" href="css/mouse.css" id="mouse-styles" />
+    <link rel="stylesheet" href="css/pages/under-construction.css" />
+    <link rel="stylesheet" href="css/pages/page-2.css" />
 
-    <link rel="stylesheet" href="css/global.css">
-    <link id="mouse-styles" rel="stylesheet" href="css/mouse.css">
-    <link rel="stylesheet" href="css/pages/under-construction.css">
-    <link rel="stylesheet" href="css/pages/page-2.css">
+    <!-- TODO: Don't use different cdn services -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/locomotive-scroll@4.1.3/dist/locomotive-scroll.min.js"
+      integrity="sha256-NRJTrhZgAnjGqLP0lFQk+uslZrlV5M+z3efWGCMZQAU="
+      crossorigin="anonymous"
+    ></script>
 
-    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/overlayscrollbars/1.13.1/js/OverlayScrollbars.min.js"
-        integrity="sha512-B1xv1CqZlvaOobTbSiJWbRO2iM0iii3wQ/LWnXWJJxKfvIRRJa910sVmyZeOrvI854sLDsFCuFHh4urASj+qgw=="
-        crossorigin="anonymous"></script> -->
-
-    <script src="https://cdn.jsdelivr.net/npm/locomotive-scroll@4.1.3/dist/locomotive-scroll.min.js"
-        integrity="sha256-NRJTrhZgAnjGqLP0lFQk+uslZrlV5M+z3efWGCMZQAU=" crossorigin="anonymous"></script>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.8.0/gsap.min.js"
-        integrity="sha512-eP6ippJojIKXKO8EPLtsUMS+/sAGHGo1UN/38swqZa1ypfcD4I0V/ac5G3VzaHfDaklFmQLEs51lhkkVaqg60Q=="
-        crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.8.0/ScrollTrigger.min.js"
-        integrity="sha512-CPA5LMoJI/a5HkSIAKcBtFXe4gqGjPUL2ExF/3PmhrrHI17wod9xOqqF+0WZQRKIIq0KwF8oG5BaiWobtrke3A=="
-        crossorigin="anonymous"></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.8.0/gsap.min.js"
+      integrity="sha512-eP6ippJojIKXKO8EPLtsUMS+/sAGHGo1UN/38swqZa1ypfcD4I0V/ac5G3VzaHfDaklFmQLEs51lhkkVaqg60Q=="
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.8.0/ScrollTrigger.min.js"
+      integrity="sha512-CPA5LMoJI/a5HkSIAKcBtFXe4gqGjPUL2ExF/3PmhrrHI17wod9xOqqF+0WZQRKIIq0KwF8oG5BaiWobtrke3A=="
+      crossorigin="anonymous"
+    ></script>
+    <!-- End TODO -->
 
     <script src="js/global.js"></script>
     <script src="js/preview.js"></script>
+
     <script src="js/effects/ripple.js"></script>
     <script src="js/effects/mouse.js"></script>
     <script src="js/effects/mouseMagnet.js"></script>
     <script src="js/effects/mouseParallax.js"></script>
     <script src="js/effects/mouseHoverRipple.js"></script>
     <script src="js/effects/textScramble.js"></script>
-    <script src="js/pages/landing-page.js"></script>
-    <script src="js/pages/connect-social.js"></script>
-</head>
 
-<body>
+    <script src="js/pages/01_landing-page.js"></script>
+    <script src="js/pages/02_connect-social.js"></script>
+  </head>
+
+  <body>
     <div id="under-construction">
-        <img src="https://raw.githubusercontent.com/hampoelz/Branding/master/web/logo.svg" alt="logo">
-        <h1>Website is under<br>construction!</h1>
+      <img
+        src="https://raw.githubusercontent.com/hampoelz/Branding/master/web/logo.svg"
+        alt="logo"
+      />
+      <h1>Website is under<br />construction!</h1>
     </div>
     <div id="preview">
-        <div id="pointer" class="normal">
-            <div id="cursor">
-                <span id="click" class="material-icons-round cursor-icon">north_east</span>
-                <span id="move_down" class="material-icons-round cursor-icon">keyboard_double_arrow_down</span>
-                <div id="move">
-                    <span class="material-icons-round cursor-icon">arrow_upward</span>
-                    <span class="material-icons-round cursor-icon">arrow_downward</span>
-                </div>
-                <span id="visit" class="cursor-text">Visit</span>
-                <span id="me" class="cursor-text">That's me</span>
-            </div>
+      <div id="pointer" class="normal">
+        <div id="cursor">
+          <span id="click" class="material-icons-round cursor-icon">
+            north_east
+          </span>
+          <span id="move_down" class="material-icons-round cursor-icon">
+            keyboard_double_arrow_down
+          </span>
+          <div id="move">
+            <span class="material-icons-round cursor-icon">arrow_upward</span>
+            <span class="material-icons-round cursor-icon">arrow_downward</span>
+          </div>
+          <span id="visit" class="cursor-text">Visit</span>
+          <span id="me" class="cursor-text">That's me</span>
         </div>
-        <div data-scroll class="smooth-scroll">
-            <div id="landing-page">
-                <section class="header">
-                    <div class="title"></div>
-                    <div class="bg-container">
-                        <div class="bg-grid">
-                            <div class="bg-item"></div>
-                            <div class="bg-item"></div>
-                            <div class="bg-item"></div>
-                            <div class="bg-item"></div>
-                        </div>
+      </div>
+      <div data-scroll class="smooth-scroll">
+        <div id="landing-page">
+          <section class="header">
+            <div class="title"></div>
+            <div class="bg-container">
+              <div class="bg-grid">
+                <div class="bg-item"></div>
+                <div class="bg-item"></div>
+                <div class="bg-item"></div>
+                <div class="bg-item"></div>
+              </div>
+            </div>
+          </section>
+          <section class="biography" style="display: none">
+            <h1 class="title hover">I am <span class="me mark">Rene</span>,</h1>
+            <div class="profile">
+              <div class="picture-container">
+                <div class="picture-spin-container">
+                  <div class="picture-shape">
+                    <div class="picture">
+                      <div class="picture-ripple"></div>
                     </div>
-                </section>
-                <section class="biography" style="display: none">
-                    <h1 class="title hover">I am <span class="me mark">Rene</span>,</h1>
-                    <div class="profile">
-                        <div class="picture-container">
-                            <div class="picture-spin-container">
-                                <div class="picture-shape">
-                                    <div class="picture">
-                                        <div class="picture-ripple"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <p class="text">a <span class="hover bold mark">18 year old teenager</span> who uses his power
-                            to study electrical engineering at the <a class="clickable" target="_blank"
-                                rel="noopener noreferrer" href="https://www.htlweiz.at/">Technical college Weiz</a>.
-                            Away from school, friends and party I'm an Austrian based hobby <span
-                                class="bold hover">programmer & designer</span> with heart and soul since I'm 12 years
-                            old. Let's start <span class="hover bold mark">CREATING</span> some <span
-                                class="hover bold mark">NEW</span> and awesome open source things.</p>
-                    </div>
-                    <div class="bg-container">
-                        <ul class="bg-bubbles">
-                            <li></li>
-                            <li></li>
-                            <li></li>
-                            <li></li>
-                            <li></li>
-                            <li></li>
-                            <li></li>
-                            <li></li>
-                            <li></li>
-                            <li></li>
-                        </ul>
-                    </div>
-                </section>
-                
-                
-                <!-- TODO <div class="ripple-transition" style="display: none">
+                  </div>
+                </div>
+              </div>
+              <p class="text">
+                a <span class="hover bold mark">18 year old teenager</span> who
+                uses his power to study electrical engineering at the
+                <a
+                  class="clickable"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  href="https://www.htlweiz.at/"
+                >
+                  Technical college Weiz </a
+                >. Away from school, friends and party I'm an Austrian based
+                hobby <span class="bold hover">programmer & designer</span> with
+                heart and soul since I'm 12 years old. Let's start
+                <span class="hover bold mark">CREATING</span> some
+                <span class="hover bold mark">NEW</span> and awesome open source
+                things.
+              </p>
+            </div>
+            <div class="bg-container">
+              <ul class="bg-bubbles">
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+              </ul>
+            </div>
+          </section>
+
+          <!-- TODO -->
+          <!--  <div class="ripple-transition" style="display: none">
                     <span class="ripple"></span>
                     <img src="https://raw.githubusercontent.com/hampoelz/Branding/master/web/logo.svg" alt="logo">
                     <progress value="0" max="100"></progress>
                     <h1>Loading projects ...</h1>
                 </div> -->
-            </div>
-
-            <div class="spacer social"></div>
-
-            <section id="connect-social">
-                <h1 class="title hover"><span class="mark hover">Connect</span> with me</h1>
-                <div class="container">
-                    <a class="media github visit" target="_blank" rel="noopener noreferrer" href="https://github.com/hampoelz">
-                        <div class="logo visit"></div>
-                        <p class="text bold visit">GitHub</p>
-                        <p class="text tag clickable">@hampoelz</p>
-                    </a>
-                    <div class="social-spacer github-insta"></div>
-                    <a class="media instagram visit" target="_blank" rel="noopener noreferrer" href="https://www.instagram.com/rene_hampi/">
-                        <div class="logo visit"></div>
-                        <p class="text bold visit">Instagram</p>
-                        <p class="text tag clickable">@rene_hampi</p>
-                    </a>
-                    <div class="social-spacer insta-twitter"></div>
-                    <a class="media twitter visit" target="_blank" rel="noopener noreferrer" href="https://twitter.com/rene_hampi/">
-                        <div class="logo visit"></div>
-                        <p class="text bold visit">Twitter</p>
-                        <p class="text tag clickable">@rene_hampi</p>
-                    </a>
-                </div>
-            </section>
-
-            <div class="spacer skills"></div>
-
-            <section id="skills">
-                <h1 class="title hover">What I <span class="mark hover">Do</span></h1>
-                
-            </section>
-
-            <div class="test">
-                <p>TEST</p>
-            </div>
-            <div class="test">
-                <p>TEST</p>
-            </div>
         </div>
-    </div>
-</body>
 
+        <div class="spacer social"></div>
+
+        <section id="connect-social">
+          <h1 class="title hover">
+            <span class="mark hover">Connect</span> with me
+          </h1>
+          <div class="container">
+            <a
+              class="media github visit"
+              target="_blank"
+              rel="noopener noreferrer"
+              href="https://github.com/hampoelz"
+            >
+              <div class="logo visit"></div>
+              <p class="text bold visit">GitHub</p>
+              <p class="text tag clickable">@hampoelz</p>
+            </a>
+            <div class="social-spacer github-insta"></div>
+            <a
+              class="media instagram visit"
+              target="_blank"
+              rel="noopener noreferrer"
+              href="https://www.instagram.com/rene_hampi/"
+            >
+              <div class="logo visit"></div>
+              <p class="text bold visit">Instagram</p>
+              <p class="text tag clickable">@rene_hampi</p>
+            </a>
+            <div class="social-spacer insta-twitter"></div>
+            <a
+              class="media twitter visit"
+              target="_blank"
+              rel="noopener noreferrer"
+              href="https://twitter.com/rene_hampi/"
+            >
+              <div class="logo visit"></div>
+              <p class="text bold visit">Twitter</p>
+              <p class="text tag clickable">@rene_hampi</p>
+            </a>
+          </div>
+        </section>
+
+        <div class="spacer skills"></div>
+
+        <section id="skills">
+          <h1 class="title hover">What I <span class="mark hover">Do</span></h1>
+        </section>
+
+        <div class="test">
+          <p>TEST</p>
+        </div>
+        <div class="test">
+          <p>TEST</p>
+        </div>
+      </div>
+    </div>
+  </body>
 </html>

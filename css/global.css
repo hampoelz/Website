@@ -1,21 +1,22 @@
-@import url(./pages/landing-page.css);
-@import url(./pages/connect-social.css);
-@import url(./pages/skills.css);
+@import url(./pages/01_landing-page.css);
+@import url(./pages/02_connect-social.css);
+@import url(./pages/03_skills.css);
 
-body, html {
+body,
+html {
   position: absolute;
-  overflow: hidden;
   margin: 0;
   padding: 0;
 
+  overflow: hidden;
   background: #080808;
 }
 
 .title {
   margin: 50px;
 
-  font-family: 'Cutive Mono', monospace;
-  font-size: calc(2rem + 4vw);
+  font-family: "Cutive Mono", monospace;
+  font-size: 6em;
   font-weight: 900;
   line-height: 1.15;
   text-align: center;
@@ -26,24 +27,27 @@ body, html {
 }
 
 .text {
-  font-family: 'Cutive Mono', monospace;
-  font-size: 2rem;
+  font-family: "Cutive Mono", monospace;
+  font-size: 2em;
 }
 
 .title,
 .text,
-a:link, a:visited, a:hover, a:active {
-  color: #FFF;
+a:link,
+a:visited,
+a:hover,
+a:active {
+  color: #fff;
 }
 
 .title .mark,
 .title.mark {
+  padding: 0 10px;
+  border-radius: 5px;
+
   text-align: center;
   text-indent: 5px;
   letter-spacing: 5px;
-
-  padding: 0 10px;
-  border-radius: 5px;
 }
 
 .text .mark,
@@ -53,11 +57,11 @@ a:link, a:visited, a:hover, a:active {
 }
 
 .title .mark,
-.title.mark,
 .text .mark,
+.title.mark,
 .text.mark {
   color: #080808;
-  background: #FFFC center;
+  background: #fffc center;
 }
 
 .text .bold,
@@ -67,15 +71,17 @@ a:link, a:visited, a:hover, a:active {
 
 .spacer {
   position: relative;
-  aspect-ratio: 960/300;
   width: 100%;
+
+  aspect-ratio: 960/300;
+
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
 }
 
 .scramble {
-  opacity: .15;
+  opacity: 0.15;
 }
 
 .picture-container {
@@ -90,6 +96,7 @@ a:link, a:visited, a:hover, a:active {
 .picture-container::before {
   position: absolute;
   border-radius: 50%;
+
   transform: scale(1.42);
 }
 
@@ -97,6 +104,7 @@ a:link, a:visited, a:hover, a:active {
   position: relative;
   width: 100%;
   height: 100%;
+
   animation: picture-spin 12s linear infinite;
 }
 
@@ -104,28 +112,37 @@ a:link, a:visited, a:hover, a:active {
   position: absolute;
   width: 100%;
   height: 100%;
-  overflow: hidden;
+
   border-radius: 60% 40% 30% 70%/60% 30% 70% 40%;
+  overflow: hidden;
+
   animation: picture-morph 8s ease-in-out infinite both alternate;
   transition: border-radius 1s ease-out;
 }
 
 .picture-container .picture-spin-container .picture-shape .picture {
   position: absolute;
-  left: -21%;
-  top: -21%;
   width: 142%;
   height: 142%;
+  left: -21%;
+  top: -21%;
+
+  overflow: visible;
+
   animation: picture-spin 12s linear infinite reverse;
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
-  overflow: visible;
 }
 
-.picture-container .picture-spin-container .picture-shape .picture .picture-ripple {
+.picture-container
+  .picture-spin-container
+  .picture-shape
+  .picture
+  .picture-ripple {
   position: absolute;
   width: 100%;
   height: 100%;
+
   overflow: hidden;
 }
 
@@ -146,20 +163,24 @@ a:link, a:visited, a:hover, a:active {
 }
 
 @media (prefers-color-scheme: light) {
-  body, html {
-    background: #F2F2F2;
+  body,
+  html {
+    background: #f2f2f2;
   }
 
   .title,
   .text,
-  a:link, a:visited, a:hover, a:active {
+  a:link,
+  a:visited,
+  a:hover,
+  a:active {
     color: #000;
   }
 
   .title .mark,
   .text .mark {
-    color: #F2F2F2;
-    background: #000C center;
+    color: #f2f2f2;
+    background: #000c center;
   }
 }
 

@@ -1,5 +1,7 @@
 const isLightTheme = window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches;
 
+// TODO: Warning when website breaks because of zoom
+
 const getStyle = query => {
     if (!query) return;
     let dummies = query.split(' ');

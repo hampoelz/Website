@@ -1,87 +1,91 @@
 :root {
-    --cursor-color: #fe3218;
+  --cursor-color: #fe3218;
 }
 
 span.ripple {
-    position: absolute;
-    border-radius: 50%;
-    transform: scale(0);
+  position: absolute;
+  border-radius: 50%;
+
+  transform: scale(0);
 }
 
-#pointer, #cursor {
-    position: fixed;
+#pointer,
+#cursor {
+  position: fixed;
 
-    background: var(--cursor-color);
-    border-radius: 50%;
+  border-radius: 50%;
+  background: var(--cursor-color);
 
-    pointer-events: none;
-    z-index: 100;
+  pointer-events: none;
+  z-index: 100;
 }
 
 #pointer {
-    top: -15px;
-    left: -15px;
-    width: 10px;
-    height: 10px;
+  width: 10px;
+  height: 10px;
+  top: -15px;
+  left: -15px;
 }
 
 #cursor {
-    top: -2rem;
-    left: -2rem;
-    width: 1.5rem;
-    height: 1.5rem;
-    border: 2px solid var(--cursor-color);
-    text-align: center;
+  width: 1.5rem;
+  height: 1.5rem;
+  top: -2rem;
+  left: -2rem;
 
-    transition: width .2s, height .2s, transform .5s, font-size .1s linear;
+  border: 2px solid var(--cursor-color);
+  text-align: center;
+
+  transition: width 0.2s, height 0.2s, transform 0.5s, font-size 0.1s linear;
 }
 
 #cursor .cursor-text,
 #cursor .cursor-icon {
-    line-height: 5.5rem;
-    font-weight: bold;
-    color: #FFF;
+  line-height: 5.5rem;
+  font-weight: bold;
+  color: #fff;
 
-    pointer-events: none;
+  pointer-events: none;
 }
 
 #cursor .cursor-icon {
-    font-size: 2rem;
+  font-size: 2rem;
 }
 
 #cursor .cursor-text {
-    font-family: 'Nunito', serif;
+  font-family: "Nunito", serif;
 }
 
 #cursor #move .cursor-icon {
-    position: absolute;
+  position: absolute;
 }
 
 #cursor #move .cursor-icon:first-child {
-    transform: translate(-50%, -11%);
+  transform: translate(-50%, -11%);
 }
 
 #cursor #move .cursor-icon:last-child {
-    transform: translate(-50%, 11%);
+  transform: translate(-50%, 11%);
 }
 
 #pointer.normal #cursor,
 #pointer.hand #cursor {
-    font-size: 0rem;
+  font-size: 0rem;
 }
 
 #pointer.normal #cursor {
-    width: 1.5rem;
-    height: 1.5rem;
-    background: transparent;
+  width: 1.5rem;
+  height: 1.5rem;
+  background: transparent;
 }
 
 #pointer.hand #cursor {
-    top: -4.5rem;
-    left: -4.5rem;
-    width: 3rem;
-    height: 3rem;
-    background: transparent;
+  width: 3rem;
+  height: 3rem;
+  top: -4.5rem;
+  left: -4.5rem;
+
+  background: transparent;
 }
 
 #pointer:not(.click) #cursor #click,
@@ -89,7 +93,7 @@ span.ripple {
 #pointer:not(.move) #cursor #move,
 #pointer:not(.visit) #cursor #visit,
 #pointer:not(.me) #cursor #me {
-    display: none;
+  display: none;
 }
 
 #pointer.click #cursor,
@@ -97,25 +101,25 @@ span.ripple {
 #pointer.move #cursor,
 #pointer.visit #cursor,
 #pointer.me #cursor {
-    top: -7rem;
-    left: -7rem;
-    width: 5.5rem;
-    height: 5.5rem;
+  width: 5.5rem;
+  height: 5.5rem;
+  top: -7rem;
+  left: -7rem;
 }
 
 #pointer.click #cursor {
-    transform: translate(-3rem, 4rem);
+  transform: translate(-3rem, 4rem);
 }
 
 #pointer.move #cursor {
-    transform: translateX(-5rem);
+  transform: translateX(-5rem);
 }
 
 #pointer.move_down #cursor {
-    transform: translateY(5rem);
+  transform: translateY(5rem);
 }
 
 #pointer.visit,
 #pointer.me {
-    background: transparent;
+  background: transparent;
 }
