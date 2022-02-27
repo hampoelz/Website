@@ -1,0 +1,11 @@
+{
+    "configurations": [
+        {
+            "type": "pwa-msedge",
+            "request": "launch",
+            "name": "Launch Edge",
+            "url": "${workspaceFolder}/index.html?preview=1",
+            "webRoot": "${workspaceFolder}"
+        }
+    ]
+}
