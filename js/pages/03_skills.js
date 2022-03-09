@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const createDataScrollStickyAttr = () => document.createAttribute("data-scroll-sticky");
     const createDataScrollOffsetAttr = () => {
         let dataScrollOffset = document.createAttribute("data-scroll-offset");
-        dataScrollOffset.value = "-10%, 10%";
+        dataScrollOffset.value = "-10%, 5%";
         return dataScrollOffset;
     };
 
