@@ -1,3 +1,11 @@
+:root {
+  --timeline-yeah-width: 90px;
+  --timeline-width: 5px;
+  --timeline-left: calc(var(--timeline-yeah-width) + 10px);
+  --timeline-point-size: 10px;
+  --timeline-point-border: 4px;
+}
+
 .spacer.skills {
   background-image: url(../../assets/spacer-skills.svg);
 }
@@ -10,4 +18,104 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+}
+
+#skills .timeline {
+  position: relative;
+  height: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 5rem;
+
+  display: table;
+}
+
+#skills .timeline:after {
+  position: absolute;
+  width: var(--timeline-width);
+  top: 0;
+  bottom: 0;
+  left: var(--timeline-left);
+
+  background: #450eff;
+  border-radius: var(--timeline-width);
+
+  content: "";
+  z-index: 1;
+}
+
+#skills .timeline h3 {
+  top: 5rem;
+  margin: 0;
+  font-size: 2.2em;
+  font-weight: 400;
+}
+
+#skills .timeline section.year {
+  position: relative;
+  margin-bottom: 3em;
+}
+
+#skills .timeline section.year section {
+  position: relative;
+  padding: 0 0 0 calc(var(--timeline-left) + var(--timeline-width) + 50px);
+  margin-bottom: 1em;
+}
+
+#skills .timeline section.year section:first-of-type {
+  margin-top: -1.75rem;
+}
+
+#skills .timeline section.year section:after {
+  content: "";
+  width: var(--timeline-point-size);
+  height: var(--timeline-point-size);
+  background: #450eff;
+  border: var(--timeline-point-border) solid var(--background);
+  border-radius: 50%;
+  position: absolute;
+  left: calc(var(--timeline-left) + var(--timeline-width) / 2 - (var(--timeline-point-size) / 2 + var(--timeline-point-border)));
+  top: calc(-1 * (var(--timeline-point-size) / 2 + var(--timeline-point-border)) + 0.5rem);
+  
+  z-index: 2;
+}
+
+#skills .timeline section.year section div {
+  width: 32rem;
+  max-width: 32rem;
+  border: 2px solid #450eff;
+  margin-bottom: 0.5em;
+}
+
+#skills .timeline section.year section div:last-child {
+  margin-bottom: 0;
+}
+
+#skills .timeline.future {
+  margin-top: -5px;
+}
+
+
+#skills .timeline.future:after,
+#skills .timeline.future section.year section:after {
+  background: var(--background);
+}
+
+#skills .timeline.future:after {
+  filter: brightness(4);
+}
+
+#skills .timeline.future section.year section:after {
+  width: calc(var(--timeline-point-size) + var(--timeline-point-border));
+  height: calc(var(--timeline-point-size) + var(--timeline-point-border));
+
+  border-color: #450eff;
+  border-width: calc(var(--timeline-point-border) / 2);
+  /* filter: brightness(6); */
+}
+
+@media (prefers-color-scheme: light) {
+  #skills .timeline.future:after {
+    filter: brightness(0.9);
+  }
 }

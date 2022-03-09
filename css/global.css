@@ -2,6 +2,10 @@
 @import url(./pages/02_connect-social.css);
 @import url(./pages/03_skills.css);
 
+:root {
+  --background: #080808;
+}
+
 body,
 html {
   position: absolute;
@@ -9,7 +13,7 @@ html {
   padding: 0;
 
   overflow: hidden;
-  background: #080808;
+  background: var(--background);
 }
 
 .title {
@@ -163,10 +167,13 @@ a:active {
 }
 
 @media (prefers-color-scheme: light) {
-  body,
+  :root {
+    --background: #f2f2f2;
+  }
+  /* body,
   html {
     background: #f2f2f2;
-  }
+  } */
 
   .title,
   .text,
