@@ -22,4 +22,25 @@ document.addEventListener("DOMContentLoaded", () => {
             header.setAttributeNode(dataScrollTarget);
         }
     }
+
+    let changeMouseColor = gsap
+      .timeline({
+        paused: true,
+      })
+      .to(document.body, {
+        "--cursor-color": "#d32829",
+      });
+
+    document
+      .querySelector(".spacer.skills")
+      .addEventListener("mouseover", () => changeMouseColor.play());
+    document
+      .querySelector("#skills")
+      .addEventListener("mouseover", () => changeMouseColor.play());
+    document
+      .querySelector(".spacer.skills")
+      .addEventListener("mouseleave", () => changeMouseColor.reverse());
+    document
+      .querySelector("#skills")
+      .addEventListener("mouseleave", () => changeMouseColor.reverse());
 });
