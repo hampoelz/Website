@@ -55,9 +55,17 @@ class TextScramble {
                 } else if (key == 'classList') charElement.classList.add(...value);
             }
 
-            for (let key of Object.keys(specialsList))
-                if (specialsList[key]) charElement.classList.add(...this.specials[key].classList);
+            for (let key of Object.keys(specialsList)) {
+                if (specialsList[key]) {
+                    if (this.specials[key].classList) charElement.classList.add(...this.specials[key].classList);
 
+                    if (this.queue[i - 1]?.to == this.specials[key].char && this.specials[key].classList_first)
+                        charElement.classList.add(...this.specials[key].classList_first);
+                    else if (this.queue[i + 1]?.to == this.specials['reset'])
+                        charElement.classList.add(...this.specials[key].classList_last);
+                } 
+            }
+            
             if (this.frame >= end) {
                 complete++;
                 charElement.innerHTML = to;

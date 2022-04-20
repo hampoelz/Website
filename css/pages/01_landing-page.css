@@ -113,6 +113,18 @@
   border-radius: 0;
 }
 
+#landing-page .header .title .mark_first {
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+  padding-left: 10px;
+}
+
+#landing-page .header .title .mark_last {
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  padding-right: 10px;
+}
+
 /*#region HeaderBackground*/
 
 #landing-page .header .bg-container {

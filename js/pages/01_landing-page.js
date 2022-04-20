@@ -21,9 +21,13 @@ document.addEventListener('DOMContentLoaded', () => {
         classList: ['hover'],
         mark: {
             char: '\x0B',
-            classList: ['mark', 'move_down', 'move_down-500']
-    }});
-    new MouseParallax([headerTitle, headerBackground]);
+            classList: ['mark', 'move_down', 'move_down-500'],
+            classList_first: ['mark_first'],
+            classList_last: ['mark_last']
+        }
+    });
+    
+    new MouseParallax([headerBackground]);
     new MouseParallax([biographyPicture], { multiplier: 0.005 });
     new MouseHoverRipple(biographyPictureRipple, { scale: 3, classList: ['me'] });
     new MouseMagnet(biographyPicture);
