@@ -1,13 +1,15 @@
 :root {
-  --header-mark-color: #080808;
-  --header-mark-background: #fffc;
+  --header-background-rgb: rgb(var(--background-dark-rgb, var(--background-rgb)));
+  --header-foreground-rgb: rgb(var(--foreground-dark-rgb, var(--foreground-rgb)));
+
+  --profile-picture-color: #1c3334;
 }
 
 #landing-page {
   height: 100vh;
   width: 100vw;
   font-family: "Noto Sans", serif;
-  background: #05002e;
+  background: rgb(var(--background-colored-rgb));
 }
 
 #landing-page .bg-container {
@@ -99,12 +101,13 @@
 }
 
 #landing-page .header .title {
-  color: #fff;
+  color: var(--header-foreground-rgb);
 }
 
 #landing-page .header .title .mark {
-  color: var(--header-mark-color);
-  background: var(--header-mark-background);
+  color: var(--header-background-rgb);
+  background: var(--header-foreground-rgb);
+  opacity: var(--mark-alpha);
 
   padding: 0;
   border-radius: 0;
@@ -137,22 +140,22 @@
 
 #landing-page .header .bg-container .bg-grid .bg-item:nth-child(1) {
   grid-area: 1/1/7/5;
-  background: #450eff;
+  background: rgb(var(--accent-1-rgb));
 }
 
 #landing-page .header .bg-container .bg-grid .bg-item:nth-child(2) {
   grid-area: 7/1/12/9;
-  background: #fe3218;
+  background: rgb(var(--accent-2-rgb));
 }
 
 #landing-page .header .bg-container .bg-grid .bg-item:nth-child(3) {
   grid-area: 7/9/13/13;
-  background: #21006f;
+  background: rgb(var(--accent-3-rgb));
 }
 
 #landing-page .header .bg-container .bg-grid .bg-item:nth-child(4) {
   grid-area: 2/5/7/13;
-  background: #d32829;
+  background: rgb(var(--accent-4-rgb));
 }
 
 /*#endregion HeaderBackground*/
@@ -191,7 +194,7 @@
   .picture-shape
   .picture {
   background: url(../../assets/profile.jpg);
-  background-color: #1c3334;
+  background-color: var(--profile-picture-color);
   background-size: 80%;
   background-position: 60% 0%;
 }
@@ -222,7 +225,7 @@
   bottom: -30vh;
 
   border-radius: 3px;
-  background: #fff;
+  background: rgb(var(--foreground-rgb));
   overflow: hidden;
 
   opacity: 0.15;
@@ -318,12 +321,6 @@
 
   100% {
     transform: translateY(-150vh) rotate(600deg);
-  }
-}
-
-@media (prefers-color-scheme: light) {
-  #landing-page .biography .bg-container .bg-bubbles li {
-    background: #000;
   }
 }
 

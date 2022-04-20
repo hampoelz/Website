@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
         mark: {
             char: '\x0B',
             classList: ['mark', 'move_down', 'move_down-500']
-        }});
+    }});
     new MouseParallax([headerTitle, headerBackground]);
     new MouseParallax([biographyPicture], { multiplier: 0.005 });
     new MouseHoverRipple(biographyPictureRipple, { scale: 3, classList: ['me'] });
@@ -38,13 +38,12 @@ document.addEventListener('DOMContentLoaded', () => {
     next();
 
     let headerBgOut = gsap.timeline()
-        .to(document.body, {
-            '--header-mark-color': getStyle('.title .mark').color,
-            '--header-mark-background': getStyle('.title .mark').backgroundColor,
+        .to(document.documentElement, {
+            '--header-background-rgb': () => `rgb(${getComputedStyle(document.documentElement).getPropertyValue('--background-rgb')})`,
+            '--header-foreground-rgb': () => `rgb(${getComputedStyle(document.documentElement).getPropertyValue('--foreground-rgb')})`,
             '--cursor-color': '#450eff'
         })
-        .to('#landing-page', { backgroundColor: getComputedStyle(document.body).backgroundColor }, '<')
-        .to('#landing-page .header .title', { color: getStyle('.text').color }, '<')
+        .to('#landing-page', { backgroundColor: () => `rgb(${getComputedStyle(document.documentElement).getPropertyValue('--background-rgb')})` }, '<')
         .to('#landing-page .header .bg-grid .bg-item', { rotation: 40, opacity: 0 }, '<')
         .to('#landing-page .header .bg-grid .bg-item:nth-child(1)', { xPercent: -100, yPercent: -100 }, '<')
         .to('#landing-page .header .bg-grid .bg-item:nth-child(4)', { xPercent: 100, yPercent: -100 }, '<')
@@ -89,7 +88,8 @@ document.addEventListener('DOMContentLoaded', () => {
             start: 0,
             end: "+=500",
             scrub: true,
-            pin: true
+            pin: true,
+            invalidateOnRefresh: true
         }
     })
         .add(headerBgOut)

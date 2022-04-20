@@ -1,5 +1,6 @@
 :root {
-  --cursor-color: #fe3218;
+  --cursor-color: rgb(var(--accent-2-rgb));
+  --cursor-text-color: rgb(var(--foreground-dark-rgb, var(--foreground-rgb)));
 }
 
 span.ripple {
@@ -43,7 +44,7 @@ span.ripple {
 #cursor .cursor-icon {
   line-height: 5.5rem;
   font-weight: bold;
-  color: #fff;
+  color: var(--cursor-text-color);
 
   pointer-events: none;
 }

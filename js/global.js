@@ -1,34 +1,21 @@
-const isLightTheme = window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches;
+const isLightTheme = () => window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches;
+
+const updateTheme = () => {
+    if (isLightTheme()) document.documentElement.setAttribute('light', true);
+    else document.documentElement.removeAttribute('light');
+
+    window.dispatchEvent(new Event('resize')); // trigger to update values in gsap
+}
 
 // TODO: Warning when website breaks because of zoom
 
-const getStyle = query => {
-    if (!query) return;
-    let dummies = query.split(' ');
-    let dummyList = [];
-
-    for (let i = 0; i < dummies.length; i++) {
-        const dummy = document.createElement('element-' + (new Date().getTime()));
-        dummy.classList.add(...dummies[i].split('.').filter(n => n))
-        dummyList.push(dummy);
-
-        if (dummyList.length > 1) dummyList[i - 1].appendChild(dummy);
-    }
-
-    document.body.appendChild(dummyList[0]);
-
-    let style = {};
-    let computedStyle = getComputedStyle(dummyList[dummyList.length - 1]);
-    for (let key in computedStyle)
-        style[key] = computedStyle[key]
-
-    dummyList.forEach(dummy => dummy.remove());
-    return style;
-}
-
 let scroll;
 
+window.matchMedia('(prefers-color-scheme: light)').addEventListener('change', updateTheme);
+
 document.addEventListener('DOMContentLoaded', () => {
+    updateTheme();
+
     const mousePointer = document.getElementById('pointer');
     const mouseCursor = document.getElementById('cursor');
 
