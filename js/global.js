@@ -3,18 +3,30 @@ const isLightTheme = () => window.matchMedia && window.matchMedia('(prefers-colo
 const updateTheme = () => {
     this.isLightTheme = isLightTheme();
 
-    if (document.documentElement.hasAttribute('force-light')) this.isLightTheme = true;
-    else if (document.documentElement.hasAttribute('force-dark')) this.isLightTheme = false;
+    const currentTheme = localStorage.getItem("theme");
+    const forceLight = document.documentElement.hasAttribute('force-light');
+    const forceDark = document.documentElement.hasAttribute('force-dark');
+    const forceNoTheme = document.documentElement.hasAttribute('force-no-theme');
+
+    if (forceLight || forceDark) {
+        if (forceLight) this.isLightTheme = true;
+        else if (forceDark) this.isLightTheme = false;
+        
+        localStorage.setItem("theme", forceLight ? 'light' : 'dark');
+    } else if (forceNoTheme)
+        localStorage.removeItem("theme");
+    else if (currentTheme)
+        this.isLightTheme = currentTheme == 'light';
 
     if (this.isLightTheme) document.documentElement.setAttribute('light', true);
-    else document.documentElement.removeAttribute('light');    
+    else document.documentElement.removeAttribute('light');
 }
 
 new MutationObserver(mutations => {
     mutations.forEach(mutation => {
         if (mutation.type == "attributes") {
             if (mutation.attributeName == 'light') window.dispatchEvent(new Event('resize')); // trigger to update values in gsap
-            if (mutation.attributeName == 'force-light' || mutation.attributeName == 'force-dark') updateTheme();
+            if (mutation.attributeName.match(/force-(light|dark|no-theme)/gm)) updateTheme();
         }        
     });
 }).observe(document.documentElement, { attributes: true });
