@@ -1,14 +1,21 @@
 const isLightTheme = () => window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches;
 
 const updateTheme = () => {
-    if (isLightTheme()) document.documentElement.setAttribute('light', true);
+    this.isLightTheme = isLightTheme();
+
+    if (document.documentElement.hasAttribute('force-light')) this.isLightTheme = true;
+    else if (document.documentElement.hasAttribute('force-dark')) this.isLightTheme = false;
+
+    if (this.isLightTheme) document.documentElement.setAttribute('light', true);
     else document.documentElement.removeAttribute('light');    
 }
 
 new MutationObserver(mutations => {
     mutations.forEach(mutation => {
-        if (mutation.type == "attributes" && mutation.target.hasAttribute('light'))
-            window.dispatchEvent(new Event('resize')); // trigger to update values in gsap
+        if (mutation.type == "attributes") {
+            if (mutation.attributeName == 'light') window.dispatchEvent(new Event('resize')); // trigger to update values in gsap
+            if (mutation.attributeName == 'force-light' || mutation.attributeName == 'force-dark') updateTheme();
+        }        
     });
 }).observe(document.documentElement, { attributes: true });
 
