@@ -5,11 +5,13 @@ document.addEventListener('DOMContentLoaded', () => {
         'When it does not\nexist \x0B#CREATE\x00 it'
     ];
 
+    /*
     const startScroll = () => scroll.start();
     const stopScroll = () => {
         scroll.stop();
         scroll.scrollTo(scroll.scroll.instance.scroll.y, { duration: 1 });
     }
+    */
 
     const headerTitle = document.querySelector('#landing-page .header .title');
     const headerBackground = document.querySelectorAll("#landing-page .header .bg-container");
