@@ -4,6 +4,7 @@
   --timeline-left: calc(var(--timeline-yeah-width) + 10px);
   --timeline-point-size: 10px;
   --timeline-point-border: 4px;
+  --timeline-accent-rgb: var(--accent-1-rgb);
 }
 
 .spacer.skills {
@@ -37,7 +38,7 @@
   bottom: 0;
   left: var(--timeline-left);
 
-  background: #450eff;
+  background: rgb(var(--timeline-accent-rgb));
   border-radius: var(--timeline-width);
 
   content: "";
@@ -70,8 +71,9 @@
   content: "";
   width: var(--timeline-point-size);
   height: var(--timeline-point-size);
-  background: #450eff;
-  border: var(--timeline-point-border) solid var(--background);
+  background: rgb(var(--timeline-accent-rgb));
+  border: var(--timeline-point-border) solid;
+  border-color: rgb(var(--background-rgb));
   border-radius: 50%;
   position: absolute;
   left: calc(var(--timeline-left) + var(--timeline-width) / 2 - (var(--timeline-point-size) / 2 + var(--timeline-point-border)));
@@ -80,42 +82,23 @@
   z-index: 2;
 }
 
+#skills .timeline section.year section.future:after {
+  width: calc(var(--timeline-point-size) + var(--timeline-point-border));
+  height: calc(var(--timeline-point-size) + var(--timeline-point-border));
+
+  background: rgb(var(--background-rgb));
+  border-color: rgb(var(--timeline-accent-rgb));
+  border-width: calc(var(--timeline-point-border) / 2);
+}
+
 #skills .timeline section.year section div {
   width: 32rem;
   max-width: 32rem;
-  border: 2px solid #450eff;
+  border: 2px solid;
+  border-color: rgb(var(--timeline-accent-rgb));;
   margin-bottom: 0.5em;
 }
 
 #skills .timeline section.year section div:last-child {
   margin-bottom: 0;
-}
-
-#skills .timeline.future {
-  margin-top: -5px;
-}
-
-
-#skills .timeline.future:after,
-#skills .timeline.future section.year section:after {
-  background: var(--background);
-}
-
-#skills .timeline.future:after {
-  filter: brightness(4);
-}
-
-#skills .timeline.future section.year section:after {
-  width: calc(var(--timeline-point-size) + var(--timeline-point-border));
-  height: calc(var(--timeline-point-size) + var(--timeline-point-border));
-
-  border-color: #450eff;
-  border-width: calc(var(--timeline-point-border) / 2);
-  /* filter: brightness(6); */
-}
-
-@media (prefers-color-scheme: light) {
-  #skills .timeline.future:after {
-    filter: brightness(0.9);
-  }
 }
