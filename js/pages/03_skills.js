@@ -64,9 +64,10 @@ document.addEventListener("DOMContentLoaded", () => {
   let changeMouseColor = gsap
     .timeline({
       paused: true,
+      invalidateOnRefresh: true
     })
-    .to(document.body, {
-      "--cursor-color": "#d32829",
+    .to(document.documentElement, {
+      "--cursor-color": () => `rgb(${getCssVariable('--accent-2-rgb')})`
     });
 
   document

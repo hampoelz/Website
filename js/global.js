@@ -19,6 +19,8 @@ new MutationObserver(mutations => {
     });
 }).observe(document.documentElement, { attributes: true });
 
+const getCssVariable = name => getComputedStyle(document.documentElement).getPropertyValue(name);
+
 // TODO: Warning when website breaks because of zoom
 
 let scroll;

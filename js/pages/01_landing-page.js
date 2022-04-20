@@ -45,11 +45,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
     let headerBgOut = gsap.timeline()
         .to(document.documentElement, {
-            '--header-background-rgb': () => `rgb(${getComputedStyle(document.documentElement).getPropertyValue('--background-rgb')})`,
-            '--header-foreground-rgb': () => `rgb(${getComputedStyle(document.documentElement).getPropertyValue('--foreground-rgb')})`,
-            '--cursor-color': '#450eff'
+            '--header-background-rgb': () => `rgb(${getCssVariable('--background-rgb')})`,
+            '--header-foreground-rgb': () => `rgb(${getCssVariable('--foreground-rgb')})`,
+            
         })
-        .to('#landing-page', { backgroundColor: () => `rgb(${getComputedStyle(document.documentElement).getPropertyValue('--background-rgb')})` }, '<')
+        .fromTo(document.documentElement,
+            { '--cursor-color': () => `rgb(${getCssVariable('--accent-2-rgb')})` },
+            { '--cursor-color': () => `rgb(${getCssVariable('--accent-1-rgb')})` }, '<')
+        .to('#landing-page', { backgroundColor: () => `rgb(${getCssVariable('--background-rgb')})` }, '<')
         .to('#landing-page .header .bg-grid .bg-item', { rotation: 40, opacity: 0 }, '<')
         .to('#landing-page .header .bg-grid .bg-item:nth-child(1)', { xPercent: -100, yPercent: -100 }, '<')
         .to('#landing-page .header .bg-grid .bg-item:nth-child(4)', { xPercent: 100, yPercent: -100 }, '<')
