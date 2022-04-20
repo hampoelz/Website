@@ -2,10 +2,15 @@ const isLightTheme = () => window.matchMedia && window.matchMedia('(prefers-colo
 
 const updateTheme = () => {
     if (isLightTheme()) document.documentElement.setAttribute('light', true);
-    else document.documentElement.removeAttribute('light');
-
-    window.dispatchEvent(new Event('resize')); // trigger to update values in gsap
+    else document.documentElement.removeAttribute('light');    
 }
+
+new MutationObserver(mutations => {
+    mutations.forEach(mutation => {
+        if (mutation.type == "attributes" && mutation.target.hasAttribute('light'))
+            window.dispatchEvent(new Event('resize')); // trigger to update values in gsap
+    });
+}).observe(document.documentElement, { attributes: true });
 
 // TODO: Warning when website breaks because of zoom
 
