@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     console.log(document.body.clientWidth)
 
-    if (urlParams.get('preview') == 1 && document.body.clientWidth > 1200 && document.body.clientHeight > 700 && document.body.clientWidth >= 1.5 * document.body.clientHeight) {
+    if (urlParams.get('debug') == 1 || (urlParams.get('preview') == 1 && document.body.clientWidth > 1200 && document.body.clientHeight > 700 && document.body.clientWidth >= 1.5 * document.body.clientHeight)) {
         constructionSection.style.setProperty('display', 'none');
         previewSection.style.removeProperty('display');
     }
