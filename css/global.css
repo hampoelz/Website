@@ -17,6 +17,8 @@
 }
 
 html:not([light]) {
+  color-scheme: dark;
+
   --background-rgb: 008, 008, 008; /* #080808 */
   --foreground-rgb: 255, 255, 255; /* #FFFFFF */
 
@@ -25,6 +27,8 @@ html:not([light]) {
 }
 
 html[light] {
+  color-scheme: light;
+
   --background-rgb: 242, 242, 242; /* #F2F2F2 */
   --foreground-rgb: 000, 000, 000; /* #000000 */
 
