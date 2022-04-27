@@ -94,9 +94,10 @@
 #skills .timeline section.year section div {
   width: 32rem;
   max-width: 32rem;
-  border: 2px solid;
-  border-color: rgb(var(--timeline-accent-rgb));;
+  border-left: 1px solid;
+  border-color: rgb(var(--accent-4-rgb));
   margin-bottom: 0.5em;
+  padding: 0.5rem;
 }
 
 #skills .timeline section.year section div:last-child {
