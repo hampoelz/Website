@@ -56,9 +56,24 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const pixelPercent = (1 / timeline.offsetHeight) * 100;
     const futureTransPercent = pixelPercent * pastOffset;
+    const futureTransPercentVar = `--timeline${i + 1}-futureTransPercent`
+
+    document.documentElement.style.setProperty(futureTransPercentVar, "0%");
+
+    gsap.timeline({
+      scrollTrigger: {
+        trigger: `#skills .timeline:nth-of-type(${i + 1})`,
+        start: "top bottom",
+        end: "bottom-=30%",
+        scrub: 1
+      }
+    })
+      .fromTo(document.documentElement,
+        { [futureTransPercentVar]: 0 },
+        { [futureTransPercentVar]: futureTransPercent });
 
     const timelineStyle = document.head.appendChild(document.createElement("style"));
-    timelineStyle.innerHTML = `#skills .timeline:nth-of-type(${i + 1}):after { background: linear-gradient(180deg, rgb(var(--timeline-accent-rgb)) 0%, rgb(var(--timeline-accent-rgb)) ${futureTransPercent - 20*pixelPercent}%, rgba(var(--foreground-rgb), 0.1) ${futureTransPercent - 8*pixelPercent}%, rgba(var(--foreground-rgb), 0.1) 100%) !important; }`;
+    timelineStyle.innerHTML = `#skills .timeline:nth-of-type(${i + 1}):after { background: linear-gradient(180deg, rgb(var(--timeline-accent-rgb)) 0%, rgb(var(--timeline-accent-rgb)) calc(var(${futureTransPercentVar}) - ${20*pixelPercent}%), rgba(var(--foreground-rgb), 0.1) calc(var(${futureTransPercentVar}) - ${8*pixelPercent}%), rgba(var(--foreground-rgb), 0.1) 100%) !important; }`;
   }
 
   let changeMouseColor = gsap
