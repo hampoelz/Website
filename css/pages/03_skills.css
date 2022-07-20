@@ -80,6 +80,8 @@
   top: calc(-1 * (var(--timeline-point-size) / 2 + var(--timeline-point-border)) + 0.5rem);
   
   z-index: 2;
+
+  transition: all 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55);
 }
 
 #skills .timeline section.year section.future:after {
