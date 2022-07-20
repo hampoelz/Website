@@ -75,9 +75,9 @@ document.addEventListener("DOMContentLoaded", () => {
     const futureTransPercent = pixelPercent * pastOffset;
     const futureTransPercentVar = `--timeline${i + 1}-futureTransPercent`
 
-    pointPositions = pointPositions.map(point => { return { element: point.element, offset: pixelPercent * point.offset } });
+    pointPositions = pointPositions.map(point => { return { element: point.element, offset: pixelPercent * point.offset + 20 * pixelPercent } });
     document.documentElement.style.setProperty(futureTransPercentVar, "0%");
-    
+
     gsap.timeline({
       scrollTrigger: {
         trigger: `#skills .timeline:nth-of-type(${i + 1})`,
