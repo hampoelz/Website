@@ -96,6 +96,9 @@ a:active {
 .text.mark {
   color: rgb(var(--background-rgb));
   background: rgba(var(--foreground-rgb), var(--mark-alpha));
+
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
 }
 
 .text .bold,
