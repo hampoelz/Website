@@ -17,20 +17,20 @@ document.addEventListener("DOMContentLoaded", () => {
     let pointPositions = [];
 
     const timelineYears = timeline.querySelectorAll("section.year");
+    const timelineFutureSections = timeline.querySelectorAll("section.year section.future");
 
     for (let j = 0; j < timelineYears.length; j++) {
       const yearSection = timelineYears[j];
 
       let sectionOffset = 0;
 
-      const timelineSections = yearSection.querySelectorAll("section");
-      const timelineFutureSections = yearSection.querySelectorAll("section.future:not(.pseudo-future)");
+      const timelineYearSections = yearSection.querySelectorAll("section");
       
-      for (let k = 0; k < timelineSections.length; k++) {
-        const section = timelineSections[k];
+      for (let k = 0; k < timelineYearSections.length; k++) {
+        const section = timelineYearSections[k];
 
         const isFirstSection = k == 0;
-        const isLastSection = k == timelineSections.length - 1;
+        const isLastSection = k == timelineYearSections.length - 1;
 
         const isFutureSection = Array.from(timelineFutureSections).includes(section);
         const isFirstFutureSection = timelineFutureSections[0] == section;
