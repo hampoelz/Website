@@ -1,3 +1,12 @@
+// TODO: separate timeline code to it's own class
+class Timeline extends HTMLElement {
+  constructor() {
+    super()
+  }
+}
+
+customElements.define('timeline-container', Timeline);
+
 document.addEventListener("DOMContentLoaded", () => {
   const createDataScrollAttr = () => document.createAttribute("data-scroll");
   const createDataScrollStickyAttr = () => document.createAttribute("data-scroll-sticky");
@@ -7,7 +16,7 @@ document.addEventListener("DOMContentLoaded", () => {
     return dataScrollOffset;
   };
 
-  const timelines = document.querySelectorAll("#skills .timeline");
+  const timelines = document.querySelectorAll("#skills timeline-container");
   for (let i = 0; i < timelines.length; i++) {
     const timeline = timelines[i];
 
@@ -49,7 +58,7 @@ document.addEventListener("DOMContentLoaded", () => {
           const yearSectionHeader = yearSection.querySelector("h3");
 
           const dataScrollTarget = document.createAttribute("data-scroll-target");
-          dataScrollTarget.value = `#skills .timeline:nth-of-type(${i + 1}) section.year:nth-child(${j + 1})`;
+          dataScrollTarget.value = `#skills timeline-container:nth-of-type(${i + 1}) section.year:nth-child(${j + 1})`;
 
           yearSectionHeader.setAttributeNode(createDataScrollAttr());
           yearSectionHeader.setAttributeNode(createDataScrollStickyAttr());
@@ -96,9 +105,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
     gsap.timeline({
       scrollTrigger: {
-        trigger: `#skills .timeline:nth-of-type(${i + 1})`,
-        start: "top bottom",
-        end: "bottom-=30%",
+        trigger: `#skills timeline-container:nth-of-type(${i + 1})`,
+        start: "top bottom-=30%",
+        end: "bottom-=20%",
         scrub: 1,
         onUpdate: trigger => {
           if (trigger.direction == 1) {
@@ -130,7 +139,7 @@ document.addEventListener("DOMContentLoaded", () => {
         { [progressPercentVar]: progressPercent });
 
     const timelineStyle = document.head.appendChild(document.createElement("style"));
-    timelineStyle.innerHTML = `#skills .timeline:nth-of-type(${i + 1}):after { background: linear-gradient(180deg, rgb(var(--timeline-accent-rgb)) 0%, rgb(var(--timeline-accent-rgb)) calc(var(${progressPercentVar}) - ${20 * pixelPercent}%), rgba(var(--foreground-rgb), 0.1) calc(var(${progressPercentVar}) - ${8 * pixelPercent}%), rgba(var(--foreground-rgb), 0.1) 100%) !important; }`;
+    timelineStyle.innerHTML = `#skills timeline-container:nth-of-type(${i + 1}):after { background: linear-gradient(180deg, rgb(var(--timeline-accent-rgb)) 0%, rgb(var(--timeline-accent-rgb)) calc(var(${progressPercentVar}) - ${20 * pixelPercent}%), rgba(var(--foreground-rgb), 0.1) calc(var(${progressPercentVar}) - ${8 * pixelPercent}%), rgba(var(--foreground-rgb), 0.1) 100%) !important; }`;
   }
 
   let changeMouseColor = gsap

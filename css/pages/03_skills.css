@@ -21,7 +21,11 @@
   justify-content: center;
 }
 
-#skills .timeline {
+#skills .tldr {
+  width: 60rem;
+}
+
+#skills timeline-container {
   position: relative;
   height: 100%;
   margin-left: auto;
@@ -31,7 +35,7 @@
   display: table;
 }
 
-#skills .timeline:after {
+#skills timeline-container:after {
   position: absolute;
   width: var(--timeline-width);
   top: 0;
@@ -45,29 +49,43 @@
   z-index: 1;
 }
 
-#skills .timeline h3 {
-  top: 5rem;
+#skills timeline-container h3,
+#skills timeline-container h4,
+#skills timeline-container p {
   margin: 0;
+}
+
+#skills timeline-container h3 {
+  top: 5rem;
   font-size: 2.2em;
   font-weight: 400;
 }
 
-#skills .timeline section.year {
+#skills timeline-container h4 {
+  margin-bottom: 0.5em;
+  font-size: 1.5em;
+}
+
+#skills timeline-container p {
+  font-size: 1.3em;
+}
+
+#skills timeline-container section.year {
   position: relative;
   margin-bottom: 3em;
 }
 
-#skills .timeline section.year section {
+#skills timeline-container section.year section {
   position: relative;
   padding: 0 0 0 calc(var(--timeline-left) + var(--timeline-width) + 50px);
   margin-bottom: 1em;
 }
 
-#skills .timeline section.year section:first-of-type {
+#skills timeline-container section.year section:first-of-type {
   margin-top: -1.75rem;
 }
 
-#skills .timeline section.year section:after {
+#skills timeline-container section.year section:after {
   content: "";
   width: var(--timeline-point-size);
   height: var(--timeline-point-size);
@@ -84,7 +102,7 @@
   transition: all 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55);
 }
 
-#skills .timeline section.year section.future:after {
+#skills timeline-container section.year section.future:after {
   width: calc(var(--timeline-point-size) + var(--timeline-point-border));
   height: calc(var(--timeline-point-size) + var(--timeline-point-border));
 
@@ -93,15 +111,18 @@
   border-width: calc(var(--timeline-point-border) / 2);
 }
 
-#skills .timeline section.year section div {
-  width: 32rem;
-  max-width: 32rem;
+#skills timeline-container section.year section div {
+  width: 40rem;
   border-left: 1px solid;
   border-color: rgb(var(--accent-4-rgb));
   margin-bottom: 0.5em;
   padding: 0.5rem;
 }
 
-#skills .timeline section.year section div:last-child {
+#skills timeline-container section.year section div.college {
+  border-color: #00a176;
+}
+
+#skills timeline-container section.year section div:last-child {
   margin-bottom: 0;
 }
