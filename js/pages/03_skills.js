@@ -72,11 +72,27 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     const pixelPercent = (1 / timeline.offsetHeight) * 100;
-    const futureTransPercent = pixelPercent * pastOffset;
-    const futureTransPercentVar = `--timeline${i + 1}-futureTransPercent`
+    const progressPercent = pixelPercent * pastOffset;
+    const progressPercentVar = `--timeline${i + 1}-progressPercent`
 
     pointPositions = pointPositions.map(point => { return { element: point.element, offset: pixelPercent * point.offset + 20 * pixelPercent } });
-    document.documentElement.style.setProperty(futureTransPercentVar, "0%");
+    document.documentElement.style.setProperty(progressPercentVar, "0%");
+
+    const getCurrentProgress = () => document.documentElement.style.getPropertyValue(progressPercentVar);
+    const getPastPoints = () => pointPositions.filter(position => parseFloat(position.offset) <= parseFloat(getCurrentProgress()));
+    const getFuturePoints = () => pointPositions.filter(position => parseFloat(position.offset) >= parseFloat(getCurrentProgress()));
+
+    function resetPointsStyle() {
+      getPastPoints().forEach(point => {
+        point.element.classList.remove("future", "pseudo-future");
+        pointPositions[pointPositions.indexOf(point)].isPast = true;
+      });
+
+      getFuturePoints().forEach(point => {
+        point.element.classList.add("future", "pseudo-future");
+        pointPositions[pointPositions.indexOf(point)].isPast = false;
+      });
+    }
 
     gsap.timeline({
       scrollTrigger: {
@@ -85,42 +101,36 @@ document.addEventListener("DOMContentLoaded", () => {
         end: "bottom-=30%",
         scrub: 1,
         onUpdate: trigger => {
-          const futureTransPercent = document.documentElement.style.getPropertyValue(futureTransPercentVar);
-
           if (trigger.direction == 1) {
-            const filteredPoints = pointPositions.filter(position => parseFloat(position.offset) <= parseFloat(futureTransPercent));
+            const pastPoints = getPastPoints();
+            for (let j = 0; j < pastPoints.length; j++) {
+              const point = pastPoints[j];
+              if (point.isPast) continue;
 
-            for (let j = 0; j < filteredPoints.length; j++) {
-              const point = filteredPoints[j];
-              if (trigger.direction == 1 && point.isPast) continue;
-  
-              const section = point.element;
-              section.classList.remove("future", "pseudo-future");
+              point.element.classList.remove("future", "pseudo-future");
               pointPositions[pointPositions.indexOf(point)].isPast = true;
             }
-          }
+          } else if (trigger.direction == -1) {
+            const futurePoints = getFuturePoints();
+            for (let j = 0; j < futurePoints.length; j++) {
+              const point = futurePoints[j];
+              if (!point.isPast) continue;
 
-          if (trigger.direction == -1) {
-            const filteredPoints = pointPositions.filter(position => parseFloat(position.offset) >= parseFloat(futureTransPercent));
-
-            for (let j = 0; j < filteredPoints.length; j++) {
-              const point = filteredPoints[j];
-              if (trigger.direction == -1 && !point.isPast) continue;
-  
-              const section = point.element;
-              section.classList.add("future", "pseudo-future");
+              point.element.classList.add("future", "pseudo-future");
               pointPositions[pointPositions.indexOf(point)].isPast = false;
             }
           }
         },
-      }
+      },
+      onComplete: resetPointsStyle,
+      onReverseComplete: resetPointsStyle
     })
       .fromTo(document.documentElement,
-        { [futureTransPercentVar]: 0 },
-        { [futureTransPercentVar]: futureTransPercent });
+        { [progressPercentVar]: 0 },
+        { [progressPercentVar]: progressPercent });
 
     const timelineStyle = document.head.appendChild(document.createElement("style"));
-    timelineStyle.innerHTML = `#skills .timeline:nth-of-type(${i + 1}):after { background: linear-gradient(180deg, rgb(var(--timeline-accent-rgb)) 0%, rgb(var(--timeline-accent-rgb)) calc(var(${futureTransPercentVar}) - ${20 * pixelPercent}%), rgba(var(--foreground-rgb), 0.1) calc(var(${futureTransPercentVar}) - ${8 * pixelPercent}%), rgba(var(--foreground-rgb), 0.1) 100%) !important; }`;
+    timelineStyle.innerHTML = `#skills .timeline:nth-of-type(${i + 1}):after { background: linear-gradient(180deg, rgb(var(--timeline-accent-rgb)) 0%, rgb(var(--timeline-accent-rgb)) calc(var(${progressPercentVar}) - ${20 * pixelPercent}%), rgba(var(--foreground-rgb), 0.1) calc(var(${progressPercentVar}) - ${8 * pixelPercent}%), rgba(var(--foreground-rgb), 0.1) 100%) !important; }`;
   }
 
   let changeMouseColor = gsap
