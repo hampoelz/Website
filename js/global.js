@@ -76,4 +76,6 @@ document.addEventListener('DOMContentLoaded', () => {
     ScrollTrigger.addEventListener("refresh", () => scroll.update());
     ScrollTrigger.defaults({ scroller: scroll.el })
     ScrollTrigger.refresh();
+
+    PIXI.utils.skipHello();
 });

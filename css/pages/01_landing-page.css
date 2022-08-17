@@ -218,9 +218,8 @@
 /*#region BiographyBackground*/
 
 #landing-page .biography .bg-container {
-  display: flex;
-  justify-content: center;
-  opacity: 0.3;
+  height: calc(100% + 30vh);
+  opacity: 0.2;
 }
 
 #landing-page .biography .bg-container .bg-bubbles {

@@ -43,6 +43,163 @@ document.addEventListener('DOMContentLoaded', () => {
     };
     next();
 
+    // TODO: separate background code to it's own class
+
+    const biographyBackgroundContainer = document.querySelector("#landing-page .biography .bg-container")
+    const biographyBackground = new PIXI.Application({
+        resizeTo: biographyBackgroundContainer,
+        backgroundAlpha: 0
+    });
+
+    biographyBackgroundContainer.appendChild(biographyBackground.view);
+
+    function decToHex(number) {
+        const hex = number.toString(16);
+        return hex.length == 1 ? "0" + hex : hex;
+    }
+
+    function rgbToHex(string) {
+        const rgb = string.split(',');
+        const r = Number(rgb[0]);
+        const g = Number(rgb[1]);
+        const b = Number(rgb[2]);
+
+        return '0x' + decToHex(r) + decToHex(g) + decToHex(b);
+    }
+
+    const itemConfig = {
+        getColor: () => rgbToHex(getComputedStyle(document.documentElement).getPropertyValue('--foreground-rgb')),
+        size: {
+            min: 10,
+            max: 200
+        },
+        borderRadius: 4,
+        rotationSpeed: 0.01,
+        movementSpeed: {
+            min: 0.2,
+            max: 0.8
+        }
+    }
+
+    const canvasSize = { width: 0, height: 0 }
+
+    let biographyBackgroundItems = [];
+
+    function createItem(positionX, offsetY, size, borderRadius, color, alpha, movementSpeed, rotationSpeed) {
+        const rect = new PIXI.Graphics();
+        rect.beginFill(0xFFFFFF, alpha);
+        rect.drawRoundedRect(0, 0, size, size, borderRadius);
+        rect.position.set(size / 2, size / 2);
+        rect.pivot.set(size / 2, size / 2);
+
+        rect.tint = color;
+
+        biographyBackground.stage.addChild(rect);
+
+        biographyBackgroundItems.push({ positionX, offsetY, movementSpeed, rotationSpeed, rect });
+
+        rect.position.set(positionX, canvasSize.height + size + offsetY);
+    }
+
+    const getRandomDouble = (min, max) => Math.random() * (max - min) + min;
+
+    function generateItem(maxTries) {
+        const offsetY = getRandomDouble(0, canvasSize.height / 10);
+        const alpha = getRandomDouble(0, 1);
+        const movementSpeed = getRandomDouble(itemConfig.movementSpeed.min, itemConfig.movementSpeed.max);
+
+        function generateDimensions(minSize, maxSize) {
+            const size = getRandomDouble(minSize, maxSize);
+            const positionX = getRandomDouble(2 / 3 * size, canvasSize.width - 2 / 3 * size);
+            return { positionX, size };
+        }
+
+        let dimensions = generateDimensions(itemConfig.size.min, itemConfig.size.max);
+        
+        function isHorizontalCollision(position, width) {
+            for (let i = 0; i < biographyBackgroundItems.length; i++) {
+                const item = biographyBackgroundItems[i];
+                if (item.positionX + item.rect.width >= position - width &&
+                    item.positionX - item.rect.width <= position + width) {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
+        const sizeSubtractionSteps = (itemConfig.size.max - itemConfig.size.min) / maxTries;
+
+        for (let i = 0; i <= maxTries; i++) {
+            if (!isHorizontalCollision(dimensions.positionX, dimensions.size)) {
+                createItem(dimensions.positionX, offsetY, dimensions.size, itemConfig.borderRadius, itemConfig.getColor(), alpha, movementSpeed, itemConfig.rotationSpeed);
+                break;
+            }
+
+            const sizeSubtraction = sizeSubtractionSteps * i;
+            dimensions = generateDimensions(itemConfig.size.min, itemConfig.size.max - sizeSubtraction);
+        }
+    }
+
+    function fillBackground() {
+        const itemCount = Math.round(canvasSize.width / itemConfig.size.max);
+
+        if (biographyBackgroundItems.length == itemCount) return;
+
+        while (biographyBackgroundItems.length < itemCount) {
+            generateItem(itemCount * 10);
+        }
+
+        while (biographyBackgroundItems.length > itemCount) {
+            const itemPosition = Math.max(...biographyBackgroundItems.map(item => item.positionX));
+            const itemIndex = biographyBackgroundItems.findIndex(item => item.positionX == itemPosition);
+            biographyBackgroundItems[itemIndex].rect.destroy();
+            biographyBackgroundItems.splice(itemIndex, 1);
+        }
+    }
+
+    biographyBackground.renderer.on('resize', (width, height) => {
+        if (height != canvasSize.height) {
+            const heightDiff = height - canvasSize.height ?? 0;
+            canvasSize.height = height;
+
+            biographyBackgroundItems.forEach(item => {
+                item.rect.position.y += heightDiff;
+            });
+        }
+
+        if (width != canvasSize.width) {
+            canvasSize.width = width;
+        }
+
+        if (width == canvasSize.width && height == canvasSize.height) {
+            // possible theme change - update colors
+            
+            biographyBackgroundItems.forEach(item => {
+                item.rect.tint = itemConfig.getColor();
+            })
+        }
+    });
+
+    biographyBackground.ticker.add(() => {
+        if (canvasSize.height == 0 || canvasSize.width == 0) return;
+            
+        biographyBackgroundItems = biographyBackgroundItems.filter(item => {
+            if (item.rect.position.y + item.rect.height < 0) {
+                item.rect.destroy();
+                return false;
+            }
+            return true;
+        });
+
+        biographyBackgroundItems.forEach(item => {
+            item.rect.position.y -= item.movementSpeed;
+            item.rect.rotation += item.rotationSpeed;
+        });
+
+        fillBackground();
+    });
+
     let headerBgOut = gsap.timeline()
         .to(document.documentElement, {
             '--header-background-rgb': () => `rgb(${getCssVariable('--background-rgb')})`,
@@ -63,7 +220,11 @@ document.addEventListener('DOMContentLoaded', () => {
         .to('#landing-page .header .title', { yPercent: 20, opacity: 0 })
         .set('#landing-page .header', { display: 'none' });
     
-    let biographyIn = gsap.timeline()
+    let biographyIn = gsap.timeline({
+        onComplete: () => {
+            biographyBackground.resize();
+        }
+    })
         .fromTo('#landing-page .biography .title, #landing-page .biography .profile', { yPercent: -10, opacity: 0 }, { yPercent: 0, opacity: 1 })
         .set('#landing-page .biography', { display: null  }, '<')
 
