@@ -130,9 +130,8 @@ document.addEventListener("DOMContentLoaded", () => {
             }
           }
         },
-      },
-      onComplete: resetPointsStyle,
-      onReverseComplete: resetPointsStyle
+        onScrubComplete: resetPointsStyle,
+      }
     })
       .fromTo(document.documentElement,
         { [progressPercentVar]: 0 },
