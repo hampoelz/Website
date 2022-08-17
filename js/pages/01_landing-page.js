@@ -227,30 +227,6 @@ document.addEventListener('DOMContentLoaded', () => {
     })
         .fromTo('#landing-page .biography .title, #landing-page .biography .profile', { yPercent: -10, opacity: 0 }, { yPercent: 0, opacity: 1 })
         .set('#landing-page .biography', { display: null  }, '<')
-
-    /*
-    let loadProjects = gsap.timeline({
-        paused: true,
-        onComplete: () => {
-            startScroll();
-            document.querySelector('#landing-page .ripple-transition h1').innerHTML = 'Unloading projects ...';
-        },
-        onReverseComplete: () => {
-            startScroll();
-            document.querySelector('#landing-page .ripple-transition h1').innerHTML = 'Loading projects ...';
-        },
-    })
-        .to(document.body, { '--cursor-color': '#fe3218' })
-        .set('#landing-page .ripple-transition', { display: null }, '<')
-        .to('#landing-page .ripple-transition span.ripple', { duration: 2, scale: 4 }, '<')
-        .fromTo('#landing-page .ripple-transition img', { scale: 0, yPercent: 25 }, { duration: .5, scale: 1, yPercent: 0 }, '<')
-        .fromTo('#landing-page .ripple-transition progress', { minWidth: 0, width: 0, opacity: 0 }, { duration: .5, width: getComputedStyle(document.querySelector('#landing-page .ripple-transition progress')).width, opacity: 1, minWidth: getComputedStyle(document.querySelector('#landing-page .ripple-transition progress')).minWidth }, '<.2')
-        .fromTo('#landing-page .ripple-transition h1', { opacity: 0 }, { duration: .5, opacity: 1 }, '>')
-        .to('#landing-page .ripple-transition progress', { duration: 1.5, value: 100 }, '>')
-        .set('#landing-page .biography', { display: 'none' }, '<')
-        // .to(document.body, { '--scrollbar-color': themeColors.foreground }, '<')
-        .to('#landing-page .ripple-transition', { duration: 1, opacity: 0, display: 'none' })
-    */
     
     gsap.timeline({
         scrollTrigger: {
@@ -265,17 +241,4 @@ document.addEventListener('DOMContentLoaded', () => {
         .add(headerBgOut)
         .add(headerOut)
         .add(biographyIn)
-    /*
-        .to({}, {
-            delay: 1,
-            onStart: () => {
-                stopScroll();
-                loadProjects.play();
-            },
-            onReverseComplete: () => {
-                stopScroll();
-                loadProjects.reverse();
-            }
-        })
-    */
 });
