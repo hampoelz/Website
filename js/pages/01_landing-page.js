@@ -226,6 +226,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     })
         .fromTo('#landing-page .biography .title, #landing-page .biography .profile', { yPercent: -10, opacity: 0 }, { yPercent: 0, opacity: 1 })
+        .fromTo('#landing-page .biography .bg-container', { opacity: 0 }, { opacity: 0.2 }, '<')
         .set('#landing-page .biography', { display: null  }, '<')
     
     gsap.timeline({
