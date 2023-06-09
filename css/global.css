@@ -76,7 +76,6 @@ a:active {
 
 .title .mark,
 .title.mark {
-  padding: 0 10px;
   border-radius: 5px;
 
   text-align: center;
@@ -86,7 +85,6 @@ a:active {
 
 .text .mark,
 .text.mark {
-  padding: 0 10px;
   border-radius: 2px;
 }
 
@@ -94,6 +92,7 @@ a:active {
 .text .mark,
 .title.mark,
 .text.mark {
+  padding: 0 10px;
   color: rgb(var(--background-rgb));
   background: rgba(var(--foreground-rgb), var(--mark-alpha));
 
@@ -119,6 +118,29 @@ a:active {
 
 .scramble {
   opacity: 0.15 !important;
+}
+
+.scramble-container {
+  white-space: nowrap;
+}
+
+.scramble-container>span.mark {
+  opacity: var(--mark-alpha);
+
+  padding: 0;
+  border-radius: 0;
+}
+
+.scramble-container>span.mark_first {
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+  padding-left: 10px;
+}
+
+.scramble-container>span.mark_last {
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  padding-right: 10px;
 }
 
 .picture-container {

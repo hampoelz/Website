@@ -77,39 +77,43 @@
     <script src="js/effects/mouseHoverRipple.js"></script>
     <script src="js/effects/textScramble.js"></script>
 
+    <script src="js/pages/under-construction.js"></script>
     <script src="js/pages/01_landing-page.js"></script>
     <script src="js/pages/03_skills.js"></script>
   </head>
 
   <body>
+    <div id="pointer" class="normal">
+      <div id="cursor">
+        <span id="click" class="material-icons-round cursor-icon">
+          north_east
+        </span>
+        <span id="move_down" class="material-icons-round cursor-icon">
+          keyboard_double_arrow_down
+        </span>
+        <div id="move">
+          <span class="material-icons-round cursor-icon">arrow_upward</span>
+          <span class="material-icons-round cursor-icon">arrow_downward</span>
+        </div>
+        <span id="visit" class="cursor-text">Visit</span>
+        <span id="me" class="cursor-text">That's me</span>
+      </div>
+    </div>
     <div id="under-construction">
       <img
         src="https://raw.githubusercontent.com/hampoelz/Branding/master/web/logo.svg"
         alt="logo"
       />
-      <h1>Website is under<br />construction!</h1>
+      <div>
+        <h1 class="title">Something <span class="mark hover">amazing</span><br />is on the way!</h1>
+        <p class="text">In the meantime, explore my <a class="clickable" rel="noopener noreferrer" href="https://github.com/hampoelz">GitHub profile</a> to get a sneak peek of my projects. I'll take you there in <span class="countdown scramble-container mark"># secs</span>.</p>
+      </div>
     </div>
     <div id="preview">
-      <div id="pointer" class="normal">
-        <div id="cursor">
-          <span id="click" class="material-icons-round cursor-icon">
-            north_east
-          </span>
-          <span id="move_down" class="material-icons-round cursor-icon">
-            keyboard_double_arrow_down
-          </span>
-          <div id="move">
-            <span class="material-icons-round cursor-icon">arrow_upward</span>
-            <span class="material-icons-round cursor-icon">arrow_downward</span>
-          </div>
-          <span id="visit" class="cursor-text">Visit</span>
-          <span id="me" class="cursor-text">That's me</span>
-        </div>
-      </div>
       <div data-scroll data-scroll-container class="smooth-scroll">
         <div id="landing-page">
           <section class="header">
-            <div class="title"></div>
+            <div class="title scramble-container"></div>
             <div class="bg-container">
               <div class="bg-grid">
                 <div class="bg-item"></div>
