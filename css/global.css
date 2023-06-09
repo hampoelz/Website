@@ -5,6 +5,12 @@
 :root {
   /* color-scheme: dark light; */
 
+  --foreground-dark-rgb: 255, 255, 255; /* #FFFFFF */
+  --background-dark-rgb: 008, 008, 008; /* #080808 */
+  
+  --foreground-light-rgb: 000, 000, 000; /* #000000 */
+  --background-light-rgb: 242, 242, 242; /* #F2F2F2 */
+
   --background-colored-rgb: 005, 000, 046; /* #05002e */
 
   --accent-1-rgb: 069, 014, 255; /* #450eff */
@@ -18,22 +24,14 @@
 
 html:not([light]) {
   color-scheme: dark;
-
-  --background-rgb: 008, 008, 008; /* #080808 */
-  --foreground-rgb: 255, 255, 255; /* #FFFFFF */
-
-  --background-light-rgb: 242, 242, 242;
-  --foreground-light-rgb: 000, 000, 000;
+  --background-rgb: var(--background-dark-rgb);
+  --foreground-rgb: var(--foreground-dark-rgb);
 }
 
 html[light] {
   color-scheme: light;
-
-  --background-rgb: 242, 242, 242; /* #F2F2F2 */
-  --foreground-rgb: 000, 000, 000; /* #000000 */
-
-  --background-dark-rgb: 008, 008, 008;
-  --foreground-dark-rgb: 255, 255, 255;
+  --background-rgb: var(--background-light-rgb);
+  --foreground-rgb: var(--foreground-light-rgb);
 }
 
 body,

@@ -1,6 +1,6 @@
 :root {
   --cursor-color: rgb(var(--accent-2-rgb));
-  --cursor-text-color: rgb(var(--foreground-dark-rgb, var(--foreground-rgb)));
+  --cursor-text-color: rgb(var(--foreground-dark-rgb));
 }
 
 span.ripple {

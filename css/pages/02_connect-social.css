@@ -27,12 +27,12 @@
 
 #connect-social .title,
 #connect-social .text {
-  color: rgb(var(--foreground-dark-rgb, var(--foreground-rgb)));
+  color: rgb(var(--foreground-dark-rgb));
 }
 
 #connect-social .title .mark {
-  color: rgb(var(--background-dark-rgb, var(--background-rgb)));
-  background: rgba(var(--foreground-dark-rgb, var(--foreground-rgb)), var(--mark-alpha));
+  color: rgb(var(--background-dark-rgb));
+  background: rgba(var(--foreground-dark-rgb), var(--mark-alpha));
 }
 
 #connect-social .container {
