@@ -48,6 +48,7 @@
 }
 
 #under-construction .countdown.scramble-container>span.mark_error {
+  color: rgb(var(--foreground-dark-rgb));
   background: rgb(var(--accent-4-rgb));
 }
 
