@@ -114,12 +114,13 @@ a:active {
   background-size: cover;
 }
 
-.scramble {
-  opacity: 0.15 !important;
-}
-
+.nowrap,
 .scramble-container {
   white-space: nowrap;
+}
+
+.scramble-container>span.scramble {
+  opacity: 0.15 !important;
 }
 
 .scramble-container>span.mark {
@@ -222,6 +223,33 @@ a:active {
 @keyframes picture-spin {
   to {
     transform: rotate(1turn);
+  }
+}
+
+.glitch-container {
+  display: inline-block;
+}
+
+.glitch-container.glitch {
+  animation: glitch 2.5s linear infinite;
+  display: inline-block;
+}
+
+@keyframes glitch {
+  1%, 31%, 62% {
+    transform: translate(2px, 0) skew(0deg);
+  }
+
+  2%, 30%, 32%, 60% {
+    transform: translate(-2px, 0) skew(0deg);
+  }
+
+  31% {
+    transform: translate(-13px, 0) skew(13deg);
+  }
+
+  61% {
+    transform: translate(21px, 0) skew(-21deg);
   }
 }
 
