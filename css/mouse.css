@@ -55,30 +55,30 @@ span.ripple {
   font-family: "Nunito", serif;
 }
 
-#cursor #move .cursor-icon {
+#cursor #cursor_move .cursor-icon {
   position: absolute;
 }
 
-#cursor #move .cursor-icon:first-child {
+#cursor #cursor_move .cursor-icon:first-child {
   transform: translate(-50%, -11%);
 }
 
-#cursor #move .cursor-icon:last-child {
+#cursor #cursor_move .cursor-icon:last-child {
   transform: translate(-50%, 11%);
 }
 
-#pointer.normal #cursor,
-#pointer.hand #cursor {
+#pointer.cursor-style-normal #cursor,
+#pointer.cursor-style-hand #cursor {
   font-size: 0rem;
 }
 
-#pointer.normal #cursor {
+#pointer.cursor-style-normal #cursor {
   width: 1.5rem;
   height: 1.5rem;
   background: transparent;
 }
 
-#pointer.hand #cursor {
+#pointer.cursor-style-hand #cursor {
   width: 3rem;
   height: 3rem;
   top: -4.5rem;
@@ -87,38 +87,38 @@ span.ripple {
   background: transparent;
 }
 
-#pointer:not(.click) #cursor #click,
-#pointer:not(.move_down) #cursor #move_down,
-#pointer:not(.move) #cursor #move,
-#pointer:not(.visit) #cursor #visit,
-#pointer:not(.me) #cursor #me {
+#pointer:not(.cursor-style-click) #cursor #cursor_click,
+#pointer:not(.cursor-style-move_down) #cursor #cursor_move_down,
+#pointer:not(.cursor-style-move) #cursor #cursor_move,
+#pointer:not(.cursor-style-visit) #cursor #cursor_visit,
+#pointer:not(.cursor-style-me) #cursor #cursor_me {
   display: none;
 }
 
-#pointer.click #cursor,
-#pointer.move_down #cursor,
-#pointer.move #cursor,
-#pointer.visit #cursor,
-#pointer.me #cursor {
+#pointer.cursor-style-click #cursor,
+#pointer.cursor-style-move_down #cursor,
+#pointer.cursor-style-move #cursor,
+#pointer.cursor-style-visit #cursor,
+#pointer.cursor-style-me #cursor {
   width: 5.5rem;
   height: 5.5rem;
   top: -7rem;
   left: -7rem;
 }
 
-#pointer.click #cursor {
+#pointer.cursor-style-click #cursor {
   transform: translate(-3rem, 4rem);
 }
 
-#pointer.move #cursor {
+#pointer.cursor-style-move #cursor {
   transform: translateX(-5rem);
 }
 
-#pointer.move_down #cursor {
+#pointer.cursor-style-move_down #cursor {
   transform: translateY(5rem);
 }
 
-#pointer.visit,
-#pointer.me {
+#pointer.cursor-style-visit,
+#pointer.cursor-style-me {
   background: transparent;
 }

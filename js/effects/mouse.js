@@ -1,55 +1,61 @@
 class Mouse {
     static #hoverClasses = Object.assign({
-        'clickable': 'click',
-        'c-scrollbar_thumb': 'move',
-        'move': 'move',
-        'move_down': 'move_down',
-        'visit': 'visit',
-        'me': 'me',
+        'clickable':            'cursor-style-click',
+        'c-scrollbar_thumb':    'cursor-style-move',
+        'cursor-move':          'cursor-style-move',
+        'cursor-move_down':     'cursor-style-move_down',
+        'cursor-hover':         'cursor-style-hand',
+        'cursor-visit':         'cursor-style-visit',
+        'cursor-me':            'cursor-style-me',
     }, {
-        hover: 'hand',
-        default: 'normal'
+        default: 'cursor-style-normal'
     })
 
     static #hoverAnimations = {
-        'click': () => gsap.fromTo('#cursor #click',
+        'cursor-style-click': () => gsap.fromTo('#cursor #cursor_click',
             { yPercent: 50, xPercent: -100, opacity: 0 },
-            { yPercent: 0, xPercent: 0, opacity: 1, delay: .2, duration: .2, ease: 'back.out', overwrite: true }),
-        'move': () => gsap.timeline({ delay: .2, defaults: { duration: .2, ease: 'back.out', overwrite: true } })
-            .fromTo('#cursor #move .cursor-icon:first-child',
+            { yPercent: 0, xPercent: 0, opacity: 1, delay: .2, duration: .2, ease: 'back.out', overwrite: true }
+        ),
+        'cursor-style-move': () => gsap.timeline(
+            { delay: .2, defaults: { duration: .2, ease: 'back.out', overwrite: true } }
+        )
+            .fromTo('#cursor #cursor_move .cursor-icon:first-child',
                 { yPercent: 50, opacity: 0 },
-                { yPercent: -10, opacity: 1 }, '<')
-            .fromTo('#cursor #move .cursor-icon:last-child',
+                { yPercent: -10, opacity: 1 }, '<'
+            )
+            .fromTo('#cursor #cursor_move .cursor-icon:last-child',
                 { yPercent: -50, opacity: 0 },
-                { yPercent: 10, opacity: 1 }, '<'),
-        'move_down': () => gsap.fromTo('#cursor #move_down',
+                { yPercent: 10, opacity: 1 }, '<'
+            ),
+        'cursor-style-move_down': () => gsap.fromTo('#cursor #cursor_move_down',
             { yPercent: -50, opacity: 0 },
-            { yPercent: 0, opacity: 1, delay: .2, duration: .2, ease: 'back.out', overwrite: true }),
+            { yPercent: 0, opacity: 1, delay: .2, duration: .2, ease: 'back.out', overwrite: true }
+        ),
     }
 
     static #clickAnimations = {
-        'click': {
-            down: () => gsap.to('#cursor #click', { yPercent: -10, xPercent: 20, duration: .2 }),
-            up: () => gsap.to('#cursor #click', { yPercent: 0, xPercent: 0, duration: .2 })
+        'cursor-style-click': {
+            down: () => gsap.to('#cursor #cursor_click', { yPercent: -10, xPercent: 20, duration: .2 }),
+            up: () => gsap.to('#cursor #cursor_click', { yPercent: 0, xPercent: 0, duration: .2 })
         },
-        'move': {
+        'cursor-style-move': {
             down: () => gsap.timeline({ defaults: { duration: .1 } })
-                .to('#cursor #move .cursor-icon:first-child', { yPercent: 0 })
-                .to('#cursor #move .cursor-icon:last-child', { yPercent: 0 }, '<'),
+                .to('#cursor #cursor_move .cursor-icon:first-child', { yPercent: 0 })
+                .to('#cursor #cursor_move .cursor-icon:last-child', { yPercent: 0 }, '<'),
             up: () => gsap.timeline({ defaults: { duration: .1 } })
-                .to('#cursor #move .cursor-icon:first-child', { yPercent: -10 })
-                .to('#cursor #move .cursor-icon:last-child', { yPercent: 10 }, '<')
+                .to('#cursor #cursor_move .cursor-icon:first-child', { yPercent: -10 })
+                .to('#cursor #cursor_move .cursor-icon:last-child', { yPercent: 10 }, '<')
         },
-        'move_down': {
+        'cursor-style-move_down': {
             down: () => {
-                gsap.to('#cursor #move_down', { yPercent: 10, duration: .2 })
+                gsap.to('#cursor #cursor_move_down', { yPercent: 10, duration: .2 })
 
                 document.addEventListener('mouseup', event => {
                     let position = parseInt(Array.from(event.target.classList).find(className => className.startsWith('move_down-')).replace('move_down-', ''));
                     if (position) scroll.scrollTo(position);
                 }, { once: true });
             },
-            up: () => gsap.to('#cursor #move_down', { yPercent: 0, duration: .2 })
+            up: () => gsap.to('#cursor #cursor_move_down', { yPercent: 0, duration: .2 })
         }
     }
 

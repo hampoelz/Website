@@ -20,10 +20,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const biographyPictureRipple = document.querySelector("#landing-page .biography .profile .picture-ripple");
 
     const textScramble = new TextScramble(headerTitle, {
-        classList: ['hover'],
+        classList: ['cursor-hover'],
         mark: {
             char: '\x0B',
-            classList: ['mark', 'move_down', 'move_down-500'],
+            classList: ['mark', 'cursor-move_down', 'move_down-500'],
             classList_first: ['mark_first'],
             classList_last: ['mark_last']
         }
