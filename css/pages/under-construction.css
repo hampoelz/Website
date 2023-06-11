@@ -43,10 +43,6 @@
   font-size: calc(13pt + (1 * var(--main-unit)));
 }
 
-#under-construction .countdown.scramble-container.mark {
-  border-radius: 5px;
-}
-
 #under-construction .countdown.scramble-container>span.mark_error {
   color: rgb(var(--foreground-dark-rgb));
   background: rgb(var(--accent-4-rgb));

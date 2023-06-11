@@ -69,21 +69,14 @@ a:link,
 a:visited,
 a:hover,
 a:active {
-  color: rgb(var(--foreground-rgb));;
+  color: rgb(var(--foreground-rgb));
 }
 
 .title .mark,
 .title.mark {
-  border-radius: 5px;
-
   text-align: center;
   text-indent: 5px;
   letter-spacing: 5px;
-}
-
-.text .mark,
-.text.mark {
-  border-radius: 2px;
 }
 
 .title .mark,
@@ -91,6 +84,7 @@ a:active {
 .title.mark,
 .text.mark {
   padding: 0 10px;
+  border-radius: 5px;
   color: rgb(var(--background-rgb));
   background: rgba(var(--foreground-rgb), var(--mark-alpha));
 
@@ -114,116 +108,8 @@ a:active {
   background-size: cover;
 }
 
-.nowrap,
-.scramble-container {
+.text-nowrap {
   white-space: nowrap;
-}
-
-.scramble-container>span.scramble {
-  opacity: 0.15 !important;
-}
-
-.scramble-container>span.mark {
-  opacity: var(--mark-alpha);
-
-  padding: 0;
-  border-radius: 0;
-}
-
-.scramble-container>span.mark_first {
-  border-top-left-radius: 5px;
-  border-bottom-left-radius: 5px;
-  padding-left: 10px;
-}
-
-.scramble-container>span.mark_last {
-  border-top-right-radius: 5px;
-  border-bottom-right-radius: 5px;
-  padding-right: 10px;
-}
-
-.picture-container {
-  position: relative;
-  min-width: 200px;
-  min-height: 200px;
-  width: 15vw;
-  height: 15vw;
-  margin: 50px;
-}
-
-.picture-container::before {
-  position: absolute;
-  border-radius: 50%;
-
-  transform: scale(1.42);
-}
-
-.picture-container
- .picture-spin-container {
-  position: relative;
-  width: 100%;
-  height: 100%;
-
-  animation: picture-spin 12s linear infinite;
-}
-
-.picture-container
- .picture-spin-container
- .picture-shape {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-
-  border-radius: 60% 40% 30% 70%/60% 30% 70% 40%;
-  overflow: hidden;
-
-  animation: picture-morph 8s ease-in-out infinite both alternate;
-  transition: border-radius 1s ease-out;
-}
-
-.picture-container
- .picture-spin-container
- .picture-shape
- .picture {
-  position: absolute;
-  width: 142%;
-  height: 142%;
-  left: -21%;
-  top: -21%;
-
-  overflow: visible;
-
-  animation: picture-spin 12s linear infinite reverse;
-  -webkit-backface-visibility: hidden;
-  backface-visibility: hidden;
-}
-
-.picture-container
-  .picture-spin-container
-  .picture-shape
-  .picture
-  .picture-ripple {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-
-  overflow: hidden;
-}
-
-@keyframes picture-morph {
-  0% {
-    border-radius: 40% 60% 60% 40%/60% 30% 70% 40%;
-  }
-
-  100% {
-    border-radius: 40% 60%;
-  }
-}
-
-@keyframes picture-spin {
-  to {
-    transform: rotate(1turn);
-  }
 }
 
 ::selection, ::-moz-selection {
