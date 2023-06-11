@@ -140,6 +140,11 @@ span.ripple {
   transform: translateY(5rem);
 }
 
+#pointer.cursor-glitch-start #cursor.glitch-container.glitch::after {
+  content: "\1F63C";
+  font-size: 1.5rem;
+}
+
 #pointer.cursor-style-visit,
 #pointer.cursor-style-me {
   background: transparent;

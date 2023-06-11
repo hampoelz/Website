@@ -61,7 +61,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             countdown_glitch.dataset.glitch = countdown.innerText;
 
-            if (counter_fake <= 0 && counter_redirect <= 0) {
+            if (counter_fake <= 0 && counter_redirect <= 0 && !window.debug) {
                 window.location.assign("https://github.com/hampoelz");
             } else {
                 setTimeout(count, 1000);
