@@ -38,6 +38,19 @@ span.ripple {
   transition: width 0.2s, height 0.2s, transform 0.5s, font-size 0.1s linear;
 }
 
+#cursor.glitch-container.glitch::before,
+#cursor.glitch-container.glitch::after {
+  border-radius: 50%;
+}
+
+#cursor.glitch-container.glitch::before {
+  background-color: #e0287d !important;
+}
+
+#cursor.glitch-container.glitch::after {
+  background-color: #1bc7fb !important;
+}
+
 #cursor .cursor-text,
 #cursor .cursor-icon {
   line-height: 5.5rem;
@@ -72,13 +85,17 @@ span.ripple {
   font-size: 0rem;
 }
 
-#pointer.cursor-style-normal #cursor {
+#pointer.cursor-style-normal #cursor,
+#pointer.cursor-style-normal #cursor.glitch-container.glitch::before,
+#pointer.cursor-style-normal #cursor.glitch-container.glitch::after {
   width: 1.5rem;
   height: 1.5rem;
   background: transparent;
 }
 
-#pointer.cursor-style-hand #cursor {
+#pointer.cursor-style-hand #cursor,
+#pointer.cursor-style-hand #cursor.glitch-container.glitch::before,
+#pointer.cursor-style-hand #cursor.glitch-container.glitch::after {
   width: 3rem;
   height: 3rem;
   top: -4.5rem;
@@ -91,7 +108,8 @@ span.ripple {
 #pointer:not(.cursor-style-move_down) #cursor #cursor_move_down,
 #pointer:not(.cursor-style-move) #cursor #cursor_move,
 #pointer:not(.cursor-style-visit) #cursor #cursor_visit,
-#pointer:not(.cursor-style-me) #cursor #cursor_me {
+#pointer:not(.cursor-style-me) #cursor #cursor_me,
+#pointer:not(.cursor-glitch-start) #cursor #cursor_error {
   display: none;
 }
 
@@ -99,7 +117,10 @@ span.ripple {
 #pointer.cursor-style-move_down #cursor,
 #pointer.cursor-style-move #cursor,
 #pointer.cursor-style-visit #cursor,
-#pointer.cursor-style-me #cursor {
+#pointer.cursor-style-me #cursor,
+#pointer.cursor-glitch-start #cursor,
+#cursor.glitch-container.glitch::before,
+#cursor.glitch-container.glitch::after {
   width: 5.5rem;
   height: 5.5rem;
   top: -7rem;
@@ -114,7 +135,8 @@ span.ripple {
   transform: translateX(-5rem);
 }
 
-#pointer.cursor-style-move_down #cursor {
+#pointer.cursor-style-move_down #cursor,
+#pointer.cursor-glitch-start #cursor {
   transform: translateY(5rem);
 }
 

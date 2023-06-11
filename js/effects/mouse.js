@@ -7,6 +7,8 @@ class Mouse {
         'cursor-hover':         'cursor-style-hand',
         'cursor-visit':         'cursor-style-visit',
         'cursor-me':            'cursor-style-me',
+        'cursor-glitch-start':  'cursor-glitch-start',
+        'cursor-glitch-stop':   'cursor-glitch-stop',
     }, {
         default: 'cursor-style-normal'
     })
@@ -31,6 +33,14 @@ class Mouse {
             { yPercent: -50, opacity: 0 },
             { yPercent: 0, opacity: 1, delay: .2, duration: .2, ease: 'back.out', overwrite: true }
         ),
+        'cursor-glitch-start': () => {
+            gsap.fromTo('#cursor #cursor_error',
+                { scale: 0, opacity: 0 },
+                { scale: 1, opacity: 1, delay: .2, duration: .2, ease: 'back.out', overwrite: true }
+            )
+            document.getElementById('cursor').classList.add('glitch-container', 'glitch')
+        },
+        'cursor-glitch-stop': () => document.getElementById('cursor').classList.remove('glitch-container', 'glitch'),
     }
 
     static #clickAnimations = {

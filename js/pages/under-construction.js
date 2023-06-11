@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const countdown_glitch = document.querySelector('#under-construction .text .glitch-container');
 
     const textScramble = new TextScramble(countdown, {
-        classList: ['hover'],
+        classList: [],
         mark: {
             char: '\x0B',
             classList: ['mark'],
@@ -36,7 +36,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     break;
                 case counter_fake_error - 2:
                     await textScramble.setText('\x0C\x0Berror\x00');
-                    countdown_glitch.classList.remove("glitch");
+                    countdown.classList.remove("cursor-glitch-start", "cursor-error");
+                    countdown_glitch.classList.remove("glitch", "cursor-glitch-start", "cursor-error");
                     break;
                 default:
                     await textScramble.setText(`\x0B${counter_fake_init} secs\x00`);
@@ -49,7 +50,8 @@ document.addEventListener('DOMContentLoaded', () => {
             countdown.classList.add("mark")
 
             if (counter_fake < -1) {
-                countdown_glitch.classList.add("glitch");
+                countdown.classList.add("cursor-glitch-start", "cursor-error");
+                countdown_glitch.classList.add("glitch", "cursor-glitch-start", "cursor-error");
                 countdown.innerText = getRandomInt(-9, -1) + " sec";
             } else if (counter_fake >= -1 && counter_fake <= 1) {
                 countdown.innerText = counter_fake + " sec";
