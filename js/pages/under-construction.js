@@ -33,10 +33,10 @@ document.addEventListener('DOMContentLoaded', () => {
             switch (counter_fake) {
                 case counter_fake_error - 1:
                     await textScramble.setText('\x0C\x0Berrrr\x00');
-                    countdown_glitch.classList.remove("glitch");
                     break;
                 case counter_fake_error - 2:
                     await textScramble.setText('\x0C\x0Berror\x00');
+                    countdown_glitch.classList.remove("glitch");
                     break;
                 default:
                     await textScramble.setText(`\x0B${counter_fake_init} secs\x00`);
@@ -57,7 +57,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 countdown.innerText = counter_fake + " secs";
             }
 
-            countdown.dataset.text = countdown.innerText;
+            countdown_glitch.dataset.glitch = countdown.innerText;
 
             if (counter_fake <= 0 && counter_redirect <= 0) {
                 window.location.assign("https://github.com/hampoelz");
